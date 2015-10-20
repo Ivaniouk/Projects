@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html >
   <head>
-    <title>MyBootStrap</title>
+    <title>MyBootStrapReg</title>
 	<meta charset="utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-	  <link rel="stylesheet/less" type="text/css" href="css/myStyle.less" />
+	<link rel="stylesheet/less" type="text/css" href="css/myStyle.less" />
 	  <script>
 		  less = {
 			  env: "development",
@@ -28,9 +28,15 @@
 			  <div class="col-lg-3"></div>
 			  <div class="col-lg-6 well">
 				  <div class="form-group">
-					  <label for="InputUsrName">Enter Name</label>
+					  <label for="InputUsrFirstName">Enter Name</label>
 					  <div class="input-group col-lg-12">
-						  <input type="text" class="form-control" id="InputUsrName"  placeholder="Enter Name" required>
+						  <input type="text" class="form-control" id="InputUsrFirstName"  placeholder="Enter Name" required>
+					  </div>
+				  </div>
+				  <div class="form-group">
+					  <label for="InputUsrLastName">Enter Last Name</label>
+					  <div class="input-group col-lg-12">
+						  <input type="text" class="form-control" id="InputUsrLastName"  placeholder="Enter Last Name" required>
 					  </div>
 				  </div>
 				  <div class="form-group">
@@ -49,6 +55,18 @@
 					  <label for="InputConfirmEmail">Confirm Email</label>
 					  <div class="input-group col-lg-12">
 						  <input type="email" class="form-control" id="InputConfirmEmail" placeholder="Confirm Email" required>
+					  </div>
+				  </div>
+				  <div class="form-group">
+					  <label for="InputPass">Password</label>
+					  <div class="input-group col-lg-12">
+						  <input type="password" class="form-control" id="InputPass" placeholder="Password" required>
+					  </div>
+				  </div>
+				  <div class="form-group">
+					  <label for="InputConfirmPass">Confirm Password</label>
+					  <div class="input-group col-lg-12">
+						  <input type="password" class="form-control" id="InputConfirmPass" placeholder="Confirm Password" required>
 					  </div>
 				  </div>
 				  <input type="submit" id="submit_btn" value="Create Accaunt" class="btn btn-primary pull-right">
