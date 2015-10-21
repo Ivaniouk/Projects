@@ -22,21 +22,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.716152">
-              <caret line="57" column="22" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
+            <state vertical-scroll-proportion="-7.3333335">
+              <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myStyle.less" pinned="false" current-in-tab="false">
+      <file leaf-file-name="myStyle.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/myStyle.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0">
-              <caret line="15" column="5" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.32304037">
+              <caret line="16" column="4" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -48,8 +48,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/js/myScript.js" />
-        <option value="$PROJECT_DIR$/css/myStyle.less" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/myStyle.less" />
       </list>
     </option>
   </component>
@@ -166,7 +166,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="-4" width="1688" height="1014" extended-state="6" />
+    <frame x="-4" y="-4" width="1688" height="1014" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -285,18 +285,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/myStyle.less">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="5" />
+        <state vertical-scroll-proportion="-7.3333335">
+          <caret line="31" column="29" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/css/myStyle.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.716152">
-          <caret line="57" column="22" selection-start-line="57" selection-start-column="22" selection-end-line="57" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.32304037">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="4" />
           <folding />
         </state>
       </provider>
