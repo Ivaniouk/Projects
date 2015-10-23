@@ -1,0 +1,108 @@
+@import "bootstrap/bootstrap.less";
+
+// Vars
+@grid-gutter-width:         100px;
+// Mixins
+.mixForSmallResolution(){
+  label{
+    font-size: small;
+  }
+
+  input[type="text"]::-webkit-input-placeholder {
+    font-size: small;
+  }
+
+
+}
+// Common styles
+label:after {
+  content: "*";
+  color: red;
+}
+
+//MEDIA
+
+//Less override
+
+//my style for control-label (override)
+.form-horizontal {
+  .form-group {
+    .make-row(30px);
+  }
+  .control-label {
+    .hidden-xs;
+    .make-sm-column(12, 30px);
+    @media (min-width: @screen-sm-min) and (max-width: @screen-lg-min){
+      .text-left;
+    }
+    .make-md-column(12, 30px);
+    .make-lg-column(3, 30px);
+  }
+}
+
+.control-input-foo {
+  .make-xs-column(12, 30px);
+  .make-md-column(9, 30px);
+  @media (max-width: @screen-sm-min) {
+    .mixForSmallResolution();
+  }
+}
+//Nick names Input style
+.nickInput{
+  .make-xs-column(12, 30px);
+  .make-sm-column(12, 30px);
+  .make-md-column(4, 30px);
+  .make-lg-column(4, 30px);
+
+  @media (max-width: @screen-sm-min) {
+    .mixForSmallResolution();
+  }
+}
+
+@media (min-width: @screen-xs-min) and (max-width: @screen-lg-min){ //ant place this MEDIA into a nickInput//
+  .lowerPaddingClass{
+    padding-bottom: 15px;
+  }
+}
+
+//Birth date style
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
