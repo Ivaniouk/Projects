@@ -11,8 +11,13 @@
   input[type="text"]::-webkit-input-placeholder {
     font-size: small;
   }
+}
 
-
+.mixColumnStyle(@xs, @sm, @md, @lg, @gutter: 30px){
+  .make-xs-column(@xs, @gutter);
+  .make-sm-column(@sm, @gutter);
+  .make-md-column(@md, @gutter);
+  .make-lg-column(@lg, @gutter);
 }
 // Common styles
 label:after {
@@ -43,17 +48,14 @@ label:after {
 .control-input-foo {
   .make-xs-column(12, 30px);
   .make-md-column(9, 30px);
+  .mixColumnStyle(12, 12, 9, 9);
   @media (max-width: @screen-sm-min) {
     .mixForSmallResolution();
   }
 }
 //Nick names Input style
 .nickInput{
-  .make-xs-column(12, 30px);
-  .make-sm-column(12, 30px);
-  .make-md-column(4, 30px);
-  .make-lg-column(4, 30px);
-
+  .mixColumnStyle(12, 12, 4, 4);
   @media (max-width: @screen-sm-min) {
     .mixForSmallResolution();
   }
@@ -66,6 +68,15 @@ label:after {
 }
 
 //Birth date style
+.birthLabel { //cannot override  .hidden-xs from .form-horizontal
+  @media (min-width: @screen-xs-min) and (max-width: @screen-sm-min){ //ant place this MEDIA into a nickInput//
+    .visible-xs();
+  }
+}
+
+.birthDateInput{
+  .mixColumnStyle(4, 4, 3, 3);
+}
 
 
 
