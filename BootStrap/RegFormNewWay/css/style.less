@@ -19,6 +19,13 @@
   .make-md-column(@md, @gutter);
   .make-lg-column(@lg, @gutter);
 }
+
+.mixColumnOffset(@xs, @sm, @md, @lg) {
+  .make-xs-column-offset(@xs);
+  .make-sm-column-offset(@sm);
+  .make-md-column-offset(@md);
+  .make-lg-column-offset(@lg);
+}
 // Common styles
 label:after {
   content: "*";
@@ -79,10 +86,7 @@ label:after {
 //Button style
 .btn_submit_style{ // How to add pull-right
   .mixColumnStyle(8, 8, 8, 8);
-  .make-xs-column-offset(1);
-  .make-sm-column-offset(0);
-  .make-md-column-offset(4);
-  .make-lg-column-offset(4);
+  .mixColumnOffset(1, 0, 4, 4);
 }
 
 
