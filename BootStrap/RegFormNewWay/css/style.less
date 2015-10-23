@@ -46,22 +46,20 @@ label:after {
 }
 
 .control-input-foo {
-  .make-xs-column(12, 30px);
-  .make-md-column(9, 30px);
-  .mixColumnStyle(12, 12, 9, 9);
+  .mixColumnStyle(12, 12, 12, 9);
   @media (max-width: @screen-sm-min) {
     .mixForSmallResolution();
   }
 }
 //Nick names Input style
 .nickInput{
-  .mixColumnStyle(12, 12, 4, 4);
+  .mixColumnStyle(12, 12, 6, 4);
   @media (max-width: @screen-sm-min) {
     .mixForSmallResolution();
   }
 }
 
-@media (min-width: @screen-xs-min) and (max-width: @screen-lg-min){ //ant place this MEDIA into a nickInput//
+@media (min-width: @screen-xs-min) and (max-width: @screen-sm-max){ //ant place this MEDIA into a nickInput//
   .lowerPaddingClass{
     padding-bottom: 15px;
   }
@@ -75,7 +73,7 @@ label:after {
 }
 
 .birthDateInput{
-  .mixColumnStyle(4, 4, 3, 3);
+  .mixColumnStyle(4, 4, 4, 3);
 }
 
 
