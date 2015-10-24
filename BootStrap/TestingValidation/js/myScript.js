@@ -8,9 +8,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $('[name="form_Main"]').on("submit",submitForm);
 
-    function submitForm(e){
-        e.preventDefault();
-        alert(1);
+    function submitForm(event){
+        event.preventDefault();
+        var form = $(this);
+        var inputs = form.find("input");
+        //alert(1);
+        $.each( inputs, function( index, val ){
+             var input = $(val),
+             val = input.val(),
+             formGroup = input.parents(".form-group"),
+             label = formGroup.find("label").text().toLowerCase();
+             console.log(label);
+        })
+
     }
 
 });
