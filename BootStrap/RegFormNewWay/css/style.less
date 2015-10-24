@@ -1,7 +1,7 @@
 @import "bootstrap/bootstrap.less";
 
 // Vars
-@grid-gutter-width:         100px;
+@grid-gutter-width:         30px;
 // Mixins
 .mixForSmallResolution(){
   label{
@@ -36,6 +36,14 @@ label:after {
 
 //Less override
 
+//main form resizing
+.mainFormWrapper{
+  .mixColumnStyle(12, 10, 10, 8);
+  .make-sm-column-offset(1);
+  .make-md-column-offset(1);
+  .make-lg-column-offset(2);
+}
+
 //my style for control-label (override)
 .form-horizontal {
   .form-group {
@@ -44,11 +52,14 @@ label:after {
   .control-label {
     .hidden-xs;
     .make-sm-column(12, 30px);
+    .make-md-column(12, 30px);
+    .make-lg-column(3, 30px);
     @media (min-width: @screen-sm-min) and (max-width: @screen-lg-min){
       .text-left;
     }
-    .make-md-column(12, 30px);
-    .make-lg-column(3, 30px);
+    &.birthLabel {
+      display: block !important;
+    }
   }
 }
 
@@ -66,16 +77,10 @@ label:after {
   }
 }
 
-@media (min-width: @screen-xs-min) and (max-width: @screen-sm-max){ //cant place this MEDIA into a nickInput//
-  .lowerPaddingClass{
-    padding-bottom: 15px;
-  }
-}
-
-//Birth date style
-.birthLabel { //cannot override  .hidden-xs from .form-horizontal
-  @media (min-width: @screen-xs-min) and (max-width: @screen-sm-min){
-    .visible-xs();
+.lowerPaddingClass {
+  padding-bottom: 15px;
+  @media (min-width: @screen-md-min) {
+    padding-bottom: 0;
   }
 }
 
@@ -84,9 +89,8 @@ label:after {
 }
 
 //Button style
-.btn_submit_style{ // How to add pull-right
-  .mixColumnStyle(8, 8, 8, 8);
-  .mixColumnOffset(1, 0, 4, 4);
+.btn_submit_style{
+  .text-center;
 }
 
 

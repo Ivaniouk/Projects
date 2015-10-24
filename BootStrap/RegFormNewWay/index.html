@@ -22,63 +22,63 @@
   <body>
   <div class="container">
 	  <div class="row">
-		  <div class="col-sm-10 col-md-10 col-lg-8 col-sm-offset-1 col-md-offset-1 col-lg-offset-2">
-			  <form class="form form-horizontal">
+		  <div class="mainFormWrapper">
+			  <form class="form form-horizontal" name="form_Main">
 				  <div class="well">
 					  <div class="form-group">
 						  <label class="control-label">Enter Name</label>
 						  <div class="control-input-foo">
-							  <input type="text" class="form-control" placeholder="Enter Name" required>
+							  <input type="text" class="form-control" name="name" placeholder="Enter Name">
 						  </div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label">Nick Names</label>
 						  <div class="nickInput lowerPaddingClass">
-							  <input type="text" class="form-control" placeholder="Game Nick" required>
+							  <input type="text" class="form-control" placeholder="Game Nick">
 						  </div>
 						  <div class="nickInput">
-							  <input type="text" class="form-control" placeholder="Forum Nick" required>
+							  <input type="text" class="form-control" placeholder="Forum Nick">
 						  </div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label birthLabel">Birth Date</label>
 						  <div class="birthDateInput">
-							  <input type="text" class="form-control" placeholder="Year" required>
+							  <input type="text" class="form-control" placeholder="Year">
 						  </div>
 						  <div class="birthDateInput">
-							  <input type="text" class="form-control" placeholder="Month" required>
+							  <input type="text" class="form-control" placeholder="Month">
 						  </div>
 						  <div class="birthDateInput">
-							  <input type="text" class="form-control" placeholder="Day" required>
+							  <input type="text" class="form-control" placeholder="Day">
 						  </div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label">E-Mail</label>
 						  <div class="control-input-foo">
-							  <input type="text" class="form-control" placeholder="E-Mail" required>
+							  <input type="text" class="form-control" name="email" placeholder="E-Mail">
 						  </div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label">Confirm E-Mail</label>
 						  <div class="control-input-foo">
-							  <input type="text" class="form-control" placeholder="Conform E-Mail" required>
+							  <input type="text" class="form-control" placeholder="Conform E-Mail">
 						  </div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label">Password</label>
 						  <div class="control-input-foo">
-							  <input type="password" class="form-control" placeholder="Password" required>
+							  <input type="password" class="form-control" bame="password" placeholder="Password">
 						  </div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label">Confirm Password</label>
 						  <div class="control-input-foo">
-							  <input type="password" class="form-control" placeholder="Confirm Password" required>
+							  <input type="password" class="form-control" placeholder="Confirm Password">
 						  </div>
 					  </div>
 					  <div class="form-group">
 						  <div class="btn_submit_style ">
-							  <input type="submit" id="submit_btn" class="btn btn-primary pull-right" value="Create Accaunt" data-toggle="modal" data-target="#myModal">
+								<button type="submit" class="btn btn-primary" name="btn_main">Create Accaunt</button>
 						  </div>
 					  </div>
 				  </div>
@@ -106,6 +106,7 @@
   </div>
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+  	<script src="js/validator.min.js"></script>
   	<script src="js/myScript.js"></script>
   </body>
 </html>
