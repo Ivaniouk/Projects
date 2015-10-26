@@ -21,5 +21,5 @@ document.addEventListener('DOMContentLoaded', function () {
             $(element).closest('.form-group').removeClass('has-error');
         }
     });
-    
+
 });

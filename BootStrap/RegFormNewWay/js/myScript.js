@@ -1,25 +1,48 @@
 document.addEventListener('DOMContentLoaded', function () {
-
+    /*
     $('[name="btn_main"]').on('click', function() {
         $('#myModal').modal('show');
 		return false;
-    });
+    });*/
 
-   // $('[name="form_Main"]').validator();
-    /*
-    $('[name="form_Main"]').validator({
+    $('[name="form_Main"]').validate({
         rules: {
             name: {
+                minlength: 3,
+                maxlength: 15,
                 required: true
+            },
+            GameNick: {
+                minlength: 3,
+                maxlength: 15,
+                required: true
+            },
+            ForumNick: {
+                minlength: 3,
+                maxlength: 15,
+                required: true
+            },
+            email: {
+                required: true
+            },
+            conformEmail: {
+                required: true
+            },
+            password: {
+                required: true,
+                minlength: 6
+            },
+            confirmPassword: {
+                required: true,
+                minlength: 6
             }
         },
-        highlight: function (element) {
-            $(element).closest('.control-group').removeClass('success').addClass('error');
+        highlight: function(element) {
+            $(element).closest('.form-group').addClass('has-error');
         },
-        success: function (element) {
-            element.text('OK!').addClass('valid')
-                .closest('.control-group').removeClass('error').addClass('success');
+        unhighlight: function(element) {
+            $(element).closest('.form-group').removeClass('has-error');
         }
-    });*/
+    });
 
 });
