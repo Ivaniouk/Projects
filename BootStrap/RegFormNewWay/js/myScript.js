@@ -44,5 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
             $(element).closest('.form-group').removeClass('has-error');
         }
     });
-
+    //awful validation (changing forms)
+    //identical fields
+    //validation on submit ???
 });
