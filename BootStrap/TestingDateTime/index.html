@@ -31,26 +31,7 @@
 							  <input type="text" class="form-control" name="name" placeholder="Enter Name">
 						  </div>
 					  </div>
-					  <div class="container">
-						  <div class="row">
-							  <div class='col-sm-6'>
-								  <div class="form-group">
-									  <div class='input-group date' id='datetimepicker2'>
-										  <input type='text' class="form-control" />
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-calendar"></span>
-												</span>
-									  </div>
-								  </div>
-							  </div>
-							  <script type="text/javascript">
-								  $(function () {
-									  $('#datetimepicker2').datetimepicker({
-										  locale: 'ru'
-									  });
-								  });
-							  </script>
-						  </div>
+					  <input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime">
 					  </div>
 					  <div class="form-group">
 						  <div class="btn_submit_style ">
@@ -83,7 +64,11 @@
   </div>
 	<script src="js/jquery-1.11.3.min.js"></script>
   	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-  	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+  	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css" />
+    <script src="js/bootstrap-datepicker.min.js"></script>
+
   	<!--<script src="js/validator.min.js"></script>-->
 	<script src="js/bootstrap.min.js"></script>
   	<script src="js/myScript.js"></script>

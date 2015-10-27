@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		return false;
     });*/
 
+    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
 
     $('[name="form_Main"]').validate({
         rules: {
