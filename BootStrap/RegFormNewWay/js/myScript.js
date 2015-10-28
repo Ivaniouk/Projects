@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //$('#datetimepicker1').datetimepicker();
 
-    $('[name="form_Main"]').validate({
+    /*$('[name="form_Main"]').validate({
         rules: {
             name: {
                 minlength: 3,
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         unhighlight: function(element) {
             $(element).closest('.form-group').removeClass('has-error');
         }
-    });
+    });*/
     //awful validation (changing forms)
     //identical fields
     //validation on submit ???
