@@ -5,13 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		return false;
     });*/
 
-    $('[name="datetimepicker1"]').datetimepicker();
-
-
-    $(function () {
-
-    });
-
+    $('[name="datetimepicker"]').datetimepicker();
 
 
 });
