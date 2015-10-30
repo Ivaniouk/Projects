@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $('[name="datetimepicker"]').datetimepicker({
         format: 'l'
     });
-
+    /*//not sure it's working
     $(function() {
         // Test if this is a mobile device
         if (typeof $.browser == 'undefined') {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 dp.datetimepicker('hide');
             });
         }
-    });
+    });*/
     /*
     $(function() {
         // Test if this is a mobile device
