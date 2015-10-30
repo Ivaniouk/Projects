@@ -29,50 +29,56 @@
 					  <div class="form-group">
 						  <label class="control-label">Enter Name</label>
 						  <div class="control-input-foo">
-							  <input type="text" class="form-control" name="name" placeholder="Enter Name">
+							  <input type="text" class="form-control" name="name" placeholder="Enter Name" data-minlength="3" required>
+							  <div class="help-block with-errors"></div>
 						  </div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label">Nick Names</label>
 						  <div class="nickInput lowerPaddingClass">
-							  <input type="text" class="form-control" name="GameNick" placeholder="Game Nick">
+							  <input type="text" class="form-control" name="GameNick" placeholder="Game Nick" data-minlength="3" required>
+							  <div class="help-block with-errors"></div>
 						  </div>
 						  <div class="nickInput">
-							  <input type="text" class="form-control" name="ForumNick" placeholder="Forum Nick">
+							  <input type="text" class="form-control" name="ForumNick" placeholder="Forum Nick" data-minlength="3" required>
+							  <div class="help-block with-errors"></div>
 						  </div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label birthLabel">Birth Date</label>
-						  <div class='input-group date birthDateInput' name='datetimepicker' >
-							  <input type='text' class="form-control" />
-									<span class="input-group-addon">
-							  			<span class="glyphicon glyphicon-calendar"></span>
-						  			</span>
-						  </div>
+					  <div class='input-group date birthDateInput' name='datetimepicker' >
+						 <input type='text' class="form-control" />
+						 <span class="input-group-addon">
+							<span class="glyphicon glyphicon-calendar"></span>
+						 </span>
+					  </div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label">E-Mail</label>
 						  <div class="control-input-foo">
-							  <input type="email" class="form-control" name="email" placeholder="E-Mail" required>
+							  <input type="email" class="form-control" id="mailID" name="email" placeholder="E-Mail" required>
+							  <div class="help-block with-errors"></div>
 						  </div>
-						  <div class="help-block with-errors"></div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label">Confirm E-Mail</label>
 						  <div class="control-input-foo">
-							  <input type="text" class="form-control" name="conformEmail" placeholder="Conform E-Mail">
+							  <input type="text" class="form-control" name="conformEmail" placeholder="Conform E-Mail" data-match="#mailID" required>
+							  <div class="help-block with-errors"></div>
 						  </div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label">Password</label>
 						  <div class="control-input-foo">
-							  <input type="password" class="form-control" name="password" placeholder="Password">
+							  <input type="password" class="form-control" id="passID" name="password" placeholder="Password" data-minlength="6" required>
+							  <div class="help-block with-errors"></div>
 						  </div>
 					  </div>
 					  <div class="form-group">
 						  <label class="control-label">Confirm Password</label>
 						  <div class="control-input-foo">
-							  <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password">
+							  <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password" data-minlength="6" data-match="#passID" required>
+							  <div class="help-block with-errors"></div>
 						  </div>
 					  </div>
 					  <div class="form-group">
