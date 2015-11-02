@@ -26,13 +26,41 @@
 			  <form class="form form-horizontal" name="form_Main">
 				  <div class="well">
 					  <div class="form-group">
-						  <div class="control-input">
+						  <div class="control-input-name">
 							  <input type="text" class="form-control col-xs-3" name="ForumNick" placeholder="Name"/>
 						  </div>
 						  <div class="btn_rand_style">
 							  <button type="submit" class="btn btn-primary" name="btn_rand">Random</button>
 						  </div>
-
+					  </div>
+					  <div class="form-group">
+						  <div class="control-select-world">
+							  <select class="selectpicker form-control">
+								  <option disabled selected>Select Homeworld</option>
+								  <option value="0">Agri World (+Fel, +Str, -Ag -- Wounds: 8 -- Fate: 2 -- Aptitude: Str)</option>
+								  <option value="1">Feral World (+S, +T, -infl -- Wounds: 9 -- Fate: 2 -- Aptitude: T)</option>
+								  <option value="2">Feudal World (+Per, +WS, -Int -- Wounds: 9 -- Fate: 3 -- Aptitude: WS)</option>
+								  <option value="3">Forge World (+T, +Int, -Fel -- Wounds: 8 -- Fate: 3 -- Aptitude: Int)</option>
+								  <option value="4">Frontier World (+BS, +Per, -Fel -- Wounds: 7 -- Fate: 3 -- Aptitude: BS)</option>
+								  <option value="5">Highborn World (+Fel, +Infl, -T -- Wounds: 9 -- Fate: 4 -- Aptitude: Fel)</option>
+								  <option value="6">Hive World (+Ag, +Per, -WP -- Wounds: 8 -- Fate: 2 -- Aptitude: Per)</option>
+								  <option value="7">Shrine World (+WP, +Fel, -Per -- Wounds: 7 -- Fate: 3 -- Aptitude: WP)</option>
+								  <option value="8">Voidborn (+Int, +WP, -S -- Wounds: 7 -- Fate: 3 -- Aptitude: Int)</option>
+							  </select>
+						  </div>
+					  </div>
+					  <div class="form-group">
+						  <div class="control-select-background">
+							  <select class="selectpicker form-control">
+								  <option disabled selected>Select Background</option>
+								  <option value="0">Adeptus Administratum</option>
+								  <option value="0">Adeptus Arbites</option>
+								  <option value="0">Adeptus Astra Telepathica</option>
+								  <option value="0">Adeptus Mechanicus</option>
+								  <option value="0">Imperial Guard</option>
+								  <option value="0">Outcast</option>
+							  </select>
+						  </div>
 					  </div>
 				  </div>
 			  </form>
