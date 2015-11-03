@@ -25,8 +25,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6666665">
-              <caret line="47" column="56" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="117" />
+            <state vertical-scroll-proportion="-9.0">
+              <caret line="54" column="41" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -42,21 +42,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myScript.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="myScript.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/myScript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.07614782">
+              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="5" selection-end-column="74" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="array.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="array.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/array.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.44792834">
-              <caret line="73" column="81" selection-start-line="73" selection-start-column="81" selection-end-line="74" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -69,9 +69,9 @@
       <list>
         <option value="$PROJECT_DIR$/css/style.less" />
         <option value="$PROJECT_DIR$/js/functions.js" />
-        <option value="$PROJECT_DIR$/js/myScript.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/array.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/myScript.js" />
       </list>
     </option>
   </component>
@@ -609,14 +609,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6666665">
-          <caret line="47" column="56" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="117" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.0">
@@ -625,18 +617,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/myScript.js">
+    <entry file="file://$PROJECT_DIR$/js/array.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/array.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44792834">
-          <caret line="73" column="81" selection-start-line="73" selection-start-column="81" selection-end-line="74" selection-end-column="26" />
+        <state vertical-scroll-proportion="-9.0">
+          <caret line="54" column="41" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/myScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07614782">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="5" selection-end-column="74" />
           <folding />
         </state>
       </provider>
