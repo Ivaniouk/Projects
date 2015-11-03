@@ -1,12 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    $('[name="form_Main"]').on('change', function(){
-        var selected = $(this).find("option:selected").val();
-        var backgroundVar =  $('[name="background"]');
-        backgroundVar.removeAttr("disabled");
-        backgroundVar.children().first().text("Select Background")
+    $('[name="world"]').on('change', function(){
+        ShowBuildBackgroundSelect();
     });
 
+    $('[name="background"]').on('change', function(){
+        ShowBuildRoleSelect();
+    });
+
+    $('[name="role"]').on('change', function(){
+        //getting info from fields and building tables
+    });
 
 
 });
