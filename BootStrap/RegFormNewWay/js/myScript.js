@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		return false;
     });*/
 
-    $('[name="form_Main"]').validator().on('submit', function (e) {
+     .validator().on('submit', function (e) {
         if (e.isDefaultPrevented()) {
             // handle the invalid form...
         } else {

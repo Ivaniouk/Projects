@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MyBootStrapReg</title>
+    <title>Generator</title>
 	<meta charset="utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.less" rel="stylesheet/less">
@@ -35,7 +35,7 @@
 					  </div>
 					  <div class="form-group">
 						  <div class="control-select-world">
-							  <select class="selectpicker form-control">
+							  <select class="selectpicker form-control" name="world">
 								  <option disabled selected>Select Homeworld</option>
 								  <option value="0">Agri World (+Fel, +Str, -Ag -- Wounds: 8 -- Fate: 2 -- Aptitude: Str)</option>
 								  <option value="1">Feral World (+S, +T, -infl -- Wounds: 9 -- Fate: 2 -- Aptitude: T)</option>
@@ -51,14 +51,16 @@
 					  </div>
 					  <div class="form-group">
 						  <div class="control-select-background">
-							  <select class="selectpicker form-control">
-								  <option disabled selected>Select Background</option>
-								  <option value="0">Adeptus Administratum</option>
-								  <option value="0">Adeptus Arbites</option>
-								  <option value="0">Adeptus Astra Telepathica</option>
-								  <option value="0">Adeptus Mechanicus</option>
-								  <option value="0">Imperial Guard</option>
-								  <option value="0">Outcast</option>
+							  <select class="selectpicker form-control" disabled>
+								  <option disabled selected>Select Homeworld first</option>
+								  <option value="0">Adepta Sororitas</option>
+								  <option value="1">Adeptus Administratum</option>
+								  <option value="2">Adeptus Arbites</option>
+								  <option value="3">Adeptus Astra Telepathica</option>
+								  <option value="4">Adeptus Mechanicus</option>
+								  <option value="5">Imperial Guard</option>
+								  <option value="6">Outcast</option>
+								  <option value="7">Mutant</option>
 							  </select>
 						  </div>
 					  </div>
@@ -70,6 +72,8 @@
   </div>
   <script src="js/jquery-1.11.3.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/array.js"></script>
+  <script src="js/functions.js"></script>
   <script src="js/myScript.js"></script>
   </body>
 </html>
