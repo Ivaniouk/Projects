@@ -18,11 +18,12 @@ $( document ).ready(function() {
         format: 'l'
     });
 
-    function check(){
+    function checkMobile(){
         //var isMobile = false;
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
            // isMobile = true;
             alert("Mobile");
+            //hiding datetimepicker
             /*
              var dp = $('[name="datetimepicker"]');
              dp.on('changeDate', function(e) {
@@ -30,10 +31,10 @@ $( document ).ready(function() {
              });*/
         }
         else{
-            alert("PC");
+            //alert("PC");
         }
     }
-    check();
+    checkMobile();
     /*
     $(function() {
         // Test if this is a mobile device
