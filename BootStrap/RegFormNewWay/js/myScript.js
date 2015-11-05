@@ -24,11 +24,11 @@ $( document ).ready(function() {
            // isMobile = true;
             alert("Mobile");
             //hiding datetimepicker
-            /*
+
              var dp = $('[name="datetimepicker"]');
              dp.on('changeDate', function(e) {
              dp.datepicker('hide');
-             });*/
+             });
         }
         else{
             //alert("PC");
