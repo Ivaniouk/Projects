@@ -1,4 +1,4 @@
-"use strict ";
+"use strict";
 
 function mySQLget(id, type) {
     var requestedObject =  JSON.parse(/*SELECT id FROM type*/);
@@ -9,7 +9,14 @@ function mySQLget(id, type) {
 }
 
 function mySQLpost(type, id, name) {
-    var sql = "UPDATE " + type + "SET name=" + name + "WHERE id=" + id;
+    var sql = "UPDATE " + type + " SET name=" + name + " WHERE id=" + id;
+    if(sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
+        throw new Error("Bad Request");
+    }
+}
+
+function mySQLdel(type, id) {
+    var sql = "DELETE FROM " + type + " WHERE id=" + id;
     if(sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
         throw new Error("Bad Request");
     }
@@ -17,15 +24,21 @@ function mySQLpost(type, id, name) {
 /**
  * subjects classes classroom
  */
-function schoolRoom(id, type) {
+function schoolRoom(id, type, name) {
     try {
-        var classroom = mySQLget(type, id); //потрібен зайвий if щоб трай не виконався? чи помилка встигне його зупинити?
-        this.id = classroom.id;
-        this.name = classroom.name;
-        this.type = type;
+        if (name === undefined) {
+            var classroom = mySQLget(type, id);
+            this.id = classroom.id;
+            this.type = type;
+            this.name = classroom.name;
+        } else {
+            this.id = id;
+            this.type = type;
+            this.name = name;
+        }
     } catch (error) {
         if (error.property === 'ID') {
-            alert("Сlassroom " +  id + " does not exist");
+            alert("Des not exist");
         } else {
             throw error; //unknown error
         }
@@ -34,14 +47,23 @@ function schoolRoom(id, type) {
 
 schoolRoom.prototype.mySQLpost = function (newName) {
     try {
-        var sql = mySQLpost(this.type, this.id, newName);
-        alert("Classroom " + this.id + " changed successfully");
+        mySQLpost(this.type, this.id, newName);
+        alert("Changed successfully");
     } catch (error) {
         if (error.property === 'Bad Request') {
-            alert("Classroom " + this.id + " failed update");
+            alert("Failed update");
         } else {
             throw error; //unknown error
         }
+    }
+}
+
+schoolRoom.prototype.mySQLdel = function () {
+    try {
+        mySQLdel(this.type, this.id);
+        alert("Deleted");
+    } catch (error) {
+        alert("Bad Request");
     }
 }
 //********************************************************************* //
