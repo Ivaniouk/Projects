@@ -8,7 +8,7 @@ function mySQLget(id, type) {
     return requestedObject;
 }
 
-function baseClass(id, type, name) {
+function BaseClass(id, type, name) {
     try {
         if (name === undefined) {
             var requestedObject = mySQLget(type, id);
@@ -29,7 +29,7 @@ function baseClass(id, type, name) {
     }
 }
 
-baseClass.prototype.post = function (newName) {
+BaseClass.prototype.post = function (newName) {
     try {
         var sql = "UPDATE " + this.type + " SET name=" + newName + " WHERE id=" + this.id;
         if (sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
@@ -45,7 +45,7 @@ baseClass.prototype.post = function (newName) {
     }
 };
 
-baseClass.prototype.delete = function () {
+BaseClass.prototype.delete = function () {
     try {
         var sql = "DELETE FROM " + this.type + " WHERE id=" + this.id;
         if (sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
@@ -57,7 +57,7 @@ baseClass.prototype.delete = function () {
     }
 };
 
-baseClass.prototype.put = function () {
+BaseClass.prototype.put = function () {
     try {
         var sql = "INSERT INTO " + this.type + " VALUES (" + this.id + ", " + this.name + ")";
         if(sql.Code === 400 || sql.Code === 404) { //TODO WRONG CODE
@@ -74,28 +74,28 @@ baseClass.prototype.put = function () {
 };
 
 /*******************************classroom************************************************ */
-function schoolRoom(id, type, name) {
-    baseClass.apply(this, arguments);
+function SchoolRoom(id, type, name) {
+    BaseClass.apply(this, arguments);
 }
 
-schoolRoom.prototype = Object.create(baseClass.prototype);
-schoolRoom.prototype.constructor = schoolRoom;
+SchoolRoom.prototype = Object.create(BaseClass.prototype);
+SchoolRoom.prototype.constructor = schoolRoom;
 
 /*******************************subject************************************************ */
-function subject(id, type, name) {
-    baseClass.apply(this, arguments);
+function Subject(id, type, name) {
+    BaseClass.apply(this, arguments);
 }
 
-subject.prototype = Object.create(baseClass.prototype);
-subject.prototype.constructor = subject;
+Subject.prototype = Object.create(BaseClass.prototype);
+Subject.prototype.constructor = Subject;
 
 /*******************************schoolClasses************************************************ */
-function schoolClasses(id, type, name) {
-    baseClass.apply(this, arguments);
+function SchoolClasses(id, type, name) {
+    BaseClass.apply(this, arguments);
 }
 
-schoolClasses.prototype = Object.create(baseClass.prototype);
-schoolClasses.prototype.constructor = schoolClasses;
+SchoolClasses.prototype = Object.create(BaseClass.prototype);
+SchoolClasses.prototype.constructor = SchoolClasses;
 
 
 
