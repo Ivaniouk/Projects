@@ -23,11 +23,10 @@ $( document ).ready(function() {
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
            // isMobile = true;
             alert("Mobile");
-            //hiding datetimepicker
-
+            //hiding datetimepicker ?
              var dp = $('[name="datetimepicker"]');
              dp.on('changeDate', function(e) {
-             dp.datepicker('hide');
+                dp.datepicker('hide');
              });
         }
         else{
