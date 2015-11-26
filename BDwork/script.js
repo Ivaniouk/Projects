@@ -5,7 +5,7 @@ function mySQLget(id, type) {
     if(requestedObject.Code === 400 || requestedObject.Code === 404) { // requestedObject // requestedObject.Code instanceOf(Error)
         throw new Error("ID");
     }
-   return requestedObject;
+    return requestedObject;
 }
 
 function mySQLpost(type, id, name) {
@@ -21,16 +21,16 @@ function mySQLdel(type, id) {
         throw new Error("Bad Request");
     }
 }
-/**
- * subjects classes classroom
- */
-function schoolRoom(id, type, name) {
+
+
+
+function baseClass(id, type, name) {
     try {
         if (name === undefined) {
-            var classroom = mySQLget(type, id);
-            this.id = classroom.id;
+            var requestedObject = mySQLget(type, id);
+            this.id = requestedObject.id;
             this.type = type;
-            this.name = classroom.name;
+            this.name = requestedObject.name;
         } else {
             this.id = id;
             this.type = type;
@@ -38,14 +38,14 @@ function schoolRoom(id, type, name) {
         }
     } catch (error) {
         if (error.property === 'ID') {
-            alert("Des not exist");
+            alert("Does  not exist");
         } else {
             throw error; //unknown error
         }
     }
 }
 
-schoolRoom.prototype.mySQLpost = function (newName) {
+baseClass.prototype.mySQLpost = function (newName) {
     try {
         mySQLpost(this.type, this.id, newName);
         alert("Changed successfully");
@@ -58,7 +58,7 @@ schoolRoom.prototype.mySQLpost = function (newName) {
     }
 }
 
-schoolRoom.prototype.mySQLdel = function () {
+baseClass.prototype.mySQLdel = function () {
     try {
         mySQLdel(this.type, this.id);
         alert("Deleted");
@@ -66,4 +66,56 @@ schoolRoom.prototype.mySQLdel = function () {
         alert("Bad Request");
     }
 }
-//********************************************************************* //
+
+/*******************************classroom************************************************ */
+function schoolRoom(id, type, name) {
+    baseClass.apply(this, arguments);
+}
+
+schoolRoom.prototype = Object.create(baseClass.prototype);
+schoolRoom.prototype.constructor = schoolRoom;
+
+/*******************************subject************************************************ */
+function subject(id, type, name) {
+    baseClass.apply(this, arguments);
+}
+
+subject.prototype = Object.create(baseClass.prototype);
+subject.prototype.constructor = subject;
+
+/*******************************schoolClasses************************************************ */
+function schoolClasses(id, type, name) {
+    baseClass.apply(this, arguments);
+}
+
+schoolClasses.prototype = Object.create(baseClass.prototype);
+schoolClasses.prototype.constructor = schoolClasses;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
