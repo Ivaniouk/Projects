@@ -8,22 +8,6 @@ function mySQLget(id, type) {
     return requestedObject;
 }
 
-function mySQLpost(type, id, name) {
-    var sql = "UPDATE " + type + " SET name=" + name + " WHERE id=" + id;
-    if(sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
-        throw new Error("Bad Request");
-    }
-}
-
-function mySQLdel(type, id) {
-    var sql = "DELETE FROM " + type + " WHERE id=" + id;
-    if(sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
-        throw new Error("Bad Request");
-    }
-}
-
-
-
 function baseClass(id, type, name) {
     try {
         if (name === undefined) {
@@ -45,9 +29,12 @@ function baseClass(id, type, name) {
     }
 }
 
-baseClass.prototype.mySQLpost = function (newName) {
+baseClass.prototype.post = function (newName) {
     try {
-        mySQLpost(this.type, this.id, newName);
+        var sql = "UPDATE " + this.type + " SET name=" + newName + " WHERE id=" + this.id;
+        if (sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
+            throw new Error("Bad Request");
+        }
         alert("Changed successfully");
     } catch (error) {
         if (error.property === 'Bad Request') {
@@ -56,16 +43,35 @@ baseClass.prototype.mySQLpost = function (newName) {
             throw error; //unknown error
         }
     }
-}
+};
 
-baseClass.prototype.mySQLdel = function () {
+baseClass.prototype.delete = function () {
     try {
-        mySQLdel(this.type, this.id);
+        var sql = "DELETE FROM " + this.type + " WHERE id=" + this.id;
+        if (sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
+            throw new Error("Bad Request");
+        }
         alert("Deleted");
     } catch (error) {
         alert("Bad Request");
     }
-}
+};
+
+baseClass.prototype.put = function () {
+    try {
+        var sql = "INSERT INTO " + this.type + " VALUES (" + this.id + ", " + this.name + ")";
+        if(sql.Code === 400 || sql.Code === 404) { //TODO WRONG CODE
+            throw new Error("Bad Request");
+        }
+        alert("Added");
+    } catch (error) {
+        if (error.property === 'Bad Request') {
+            alert("Failed update");
+        } else {
+            throw error; //unknown error
+        }
+    }
+};
 
 /*******************************classroom************************************************ */
 function schoolRoom(id, type, name) {
@@ -90,13 +96,6 @@ function schoolClasses(id, type, name) {
 
 schoolClasses.prototype = Object.create(baseClass.prototype);
 schoolClasses.prototype.constructor = schoolClasses;
-
-
-
-
-
-
-
 
 
 
