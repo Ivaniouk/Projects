@@ -174,12 +174,54 @@ Teacher.prototype.put = function () {
         alert("Added");
     } catch (error) {
         if (error.property === 'Bad Request') {
-            alert("Failed update");
+            alert("Failed to create");
         } else {
             throw error; //unknown error
         }
     }
 };
+
+/*******************************lesson_week************************************************ */
+
+function LessonWeek(id, type, name, number, requestTrigger) {
+    try {
+        if (requestTrigger === undefined) {
+            var requestedObject = mySQLget(type, id);
+            this.id = requestedObject.id;
+            this.type = type;
+            this.name = requestedObject.name;
+            this.number = requestedObject.number;
+        } else {
+            this.id = id;
+            this.type = type;
+            this.name = name;
+            this.number = number;
+        }
+    } catch (error) {
+        if (error.property === 'ID') {
+            alert("Does  not exist");
+        } else {
+            throw error; //unknown error
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
