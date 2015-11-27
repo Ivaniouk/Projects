@@ -1,8 +1,16 @@
 "use strict";
 
-function mySQLget(id, type) {
+function mySQLget(type, id) {
     var requestedObject =  JSON.parse(/*SELECT id FROM type*/);
-    if(requestedObject.Code === 400 || requestedObject.Code === 404) { // requestedObject // requestedObject.Code instanceOf(Error)
+    if (requestedObject.Code === 400 || requestedObject.Code === 404) { // requestedObject // requestedObject.Code instanceOf(Error)
+        throw new Error("ID");
+    }
+    return requestedObject;
+}
+
+function mySQLgetTeachers(type, firstName,  middleName, lastName) {
+    var requestedObject =  JSON.parse(/*request by names*/);
+    if (requestedObject.Code === 400 || requestedObject.Code === 404) {
         throw new Error("ID");
     }
     return requestedObject;
@@ -97,9 +105,36 @@ function SchoolClasses(id, type, name) {
 SchoolClasses.prototype = Object.create(BaseClass.prototype);
 SchoolClasses.prototype.constructor = SchoolClasses;
 
+/*******************************teacher************************************************ */
+
+function Teacher(type, firstName, middleName, lastName, requestTrigger) {
+    try {
+        if (requestTrigger === undefined) {
+            var requestedObject = mySQLgetTeachers(type, firstName,  middleName, lastName);
+            this.type = type;
+            this.firstName = requestedObject.firstName;
+            this.middleName = requestedObject.middleName;
+            this.lastName = requestedObject.lastName;
+
+        } else {
+            this.type = type;
+            this.firstName = firstName;
+            this.middleName = middleName;
+            this.lastName = lastName;
+        }
+    } catch (error) {
+        if (error.property === 'ID') {
+            alert("Does  not exist");
+        } else {
+            throw error; //unknown error
+        }
+    }
+}
 
 
 
+Teacher.prototype = Object.create(BaseClass.prototype);
+Teacher.prototype.constructor = Teacher;
 
 
 
