@@ -16,7 +16,7 @@ function mySQLgetTeachers(type, firstName,  middleName, lastName) {
     return requestedObject;
 }
 
-function mySQLgetLesson(id, type, name, number) { //obj
+function mySQLgetLessonDay(id, type, name, number) { //obj
     var requestedObject =  JSON.parse(/*request*/);
     if (requestedObject.Code === 400 || requestedObject.Code === 404) {
         throw new Error("ID");
@@ -261,7 +261,7 @@ function LessonDay(obj) {
     try {
         var outerObject =  JSON.parse(obj);
         if (outerObject.requestTrigger === undefined) {
-            var requestedObject = mySQLgetLesson(type, id); //not working
+            var requestedObject = mySQLgetLessonDay(type, id); //not working
             this.type = requestedObject.type;
             this.id = requestedObject.id;
             this.lessonWeekID = requestedObject.lessonWeekID;
