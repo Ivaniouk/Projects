@@ -137,6 +137,49 @@ Teacher.prototype = Object.create(BaseClass.prototype);
 Teacher.prototype.constructor = Teacher;
 
 
+Teacher.prototype.post = function (newName) {
+    try {
+        //update tacher
+        if (sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
+            throw new Error("Bad Request");
+        }
+        alert("Changed successfully");
+    } catch (error) {
+        if (error.property === 'Bad Request') {
+            alert("Failed update");
+        } else {
+            throw error; //unknown error
+        }
+    }
+};
+
+Teacher.prototype.delete = function () {
+    try {
+        //Delete by teacher name
+        if (sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
+            throw new Error("Bad Request");
+        }
+        alert("Deleted");
+    } catch (error) {
+        alert("Bad Request");
+    }
+};
+
+Teacher.prototype.put = function () {
+    try {
+        //put new teacher method
+        if(sql.Code === 400 || sql.Code === 404) { //TODO WRONG CODE
+            throw new Error("Bad Request");
+        }
+        alert("Added");
+    } catch (error) {
+        if (error.property === 'Bad Request') {
+            alert("Failed update");
+        } else {
+            throw error; //unknown error
+        }
+    }
+};
 
 
 
