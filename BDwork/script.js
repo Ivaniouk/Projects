@@ -16,6 +16,16 @@ function mySQLgetTeachers(type, firstName,  middleName, lastName) {
     return requestedObject;
 }
 
+function mySQLgetLesson(id, type, name, number) {
+    var requestedObject =  JSON.parse(/*request*/);
+    if (requestedObject.Code === 400 || requestedObject.Code === 404) {
+        throw new Error("ID");
+    }
+    return requestedObject;
+}
+
+/*******************************lesson_week************************************************ */
+
 function BaseClass(id, type, name) {
     try {
         if (name === undefined) {
@@ -131,13 +141,7 @@ function Teacher(type, firstName, middleName, lastName, requestTrigger) {
     }
 }
 
-
-
-Teacher.prototype = Object.create(BaseClass.prototype);
-Teacher.prototype.constructor = Teacher;
-
-
-Teacher.prototype.post = function (newName) {
+Teacher.prototype.post = function (firstName, middleName, lastName) {
     try {
         //update tacher
         if (sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
@@ -165,7 +169,7 @@ Teacher.prototype.delete = function () {
     }
 };
 
-Teacher.prototype.put = function () {
+Teacher.prototype.put = function (firstName, middleName, lastName) {
     try {
         //put new teacher method
         if(sql.Code === 400 || sql.Code === 404) { //TODO WRONG CODE
@@ -186,7 +190,7 @@ Teacher.prototype.put = function () {
 function LessonWeek(id, type, name, number, requestTrigger) {
     try {
         if (requestTrigger === undefined) {
-            var requestedObject = mySQLget(type, id);
+            var requestedObject = mySQLgetLesson(type, id);
             this.id = requestedObject.id;
             this.type = type;
             this.name = requestedObject.name;
@@ -206,10 +210,51 @@ function LessonWeek(id, type, name, number, requestTrigger) {
     }
 }
 
+LessonWeek.prototype.post = function (name, number, requestTrigger) {
+    try {
+        //update LessonWeek
+        if (sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
+            throw new Error("Bad Request");
+        }
+        alert("Changed successfully");
+    } catch (error) {
+        if (error.property === 'Bad Request') {
+            alert("Failed update");
+        } else {
+            throw error; //unknown error
+        }
+    }
+};
 
+LessonWeek.prototype.delete = function () {
+    try {
+        //Delete by LessonWeek name
+        if (sql.Code === 400 || sql.Code === 404) { // requestedObject // requestedObject.Code
+            throw new Error("Bad Request");
+        }
+        alert("Deleted");
+    } catch (error) {
+        alert("Bad Request");
+    }
+};
 
+LessonWeek.prototype.put = function (name, number, requestTrigger) {
+    try {
+        //put new LessonWeek method
+        if(sql.Code === 400 || sql.Code === 404) { //TODO WRONG CODE
+            throw new Error("Bad Request");
+        }
+        alert("Added");
+    } catch (error) {
+        if (error.property === 'Bad Request') {
+            alert("Failed to create");
+        } else {
+            throw error; //unknown error
+        }
+    }
+};
 
-
+/*******************************lesson_days************************************************ */
 
 
 
