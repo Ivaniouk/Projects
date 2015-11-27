@@ -16,7 +16,7 @@ function mySQLgetTeachers(type, firstName,  middleName, lastName) {
     return requestedObject;
 }
 
-function mySQLgetLesson(id, type, name, number) {
+function mySQLgetLesson(id, type, name, number) { //obj
     var requestedObject =  JSON.parse(/*request*/);
     if (requestedObject.Code === 400 || requestedObject.Code === 404) {
         throw new Error("ID");
@@ -254,10 +254,48 @@ LessonWeek.prototype.put = function (name, number, requestTrigger) {
     }
 };
 
-/*******************************lesson_days************************************************ */
+/*******************************lesson_day************************************************ */
 
 
-
+function LessonDay(obj) {
+    try {
+        var outerObject =  JSON.parse(obj);
+        if (outerObject.requestTrigger === undefined) {
+            var requestedObject = mySQLgetLesson(type, id); //not working
+            this.type = requestedObject.type;
+            this.id = requestedObject.id;
+            this.lessonWeekID = requestedObject.lessonWeekID;
+            this.lessonWeek = new LessonWeek(
+                requestedObject.lessonWeekId,
+                requestedObject.lessonWeekType,
+                requestedObject.lessonWeekName,
+                requestedObject.lessonWeekNumber,
+                requestedObject.lessonWeekrequestTrigger
+            );
+            this.name = requestedObject.LessonDayName;
+            this.lessonWeekID = requestedObject.lessonMaxCount;
+        } else {
+            this.type = obj.type;
+            this.id = obj.id;
+            this.lessonWeekID = obj.lessonWeekID;
+            this.lessonWeek = new LessonWeek(
+                obj.lessonWeekId,
+                obj.lessonWeekType,
+                obj.lessonWeekName,
+                obj.lessonWeekNumber,
+                obj.lessonWeekrequestTrigger
+            );
+            this.name = obj.LessonDayName;
+            this.lessonWeekID = obj.lessonMaxCount;
+        }
+    } catch (error) {
+        if (error.property === 'ID') {
+            alert("Does  not exist");
+        } else {
+            throw error; //unknown error
+        }
+    }
+}
 
 
 
