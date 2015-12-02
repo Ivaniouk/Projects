@@ -18,14 +18,48 @@ function SchoolRoom(newId, newName) {
             throw new CustomPropertyError("ID not valid", newId);
         }
 
-        if (newName.length <= 255) {
+        if (newName !== "" && newName.length <= 255) {
             this.name = newName;
         } else {
             this.name = "unknown";
             throw new CustomPropertyError("name not valid", newName);
         }
     } catch (e) {
-        // logMyErrors(e.message, e.name)
+        // logMyErrors(e.message, e.name);
     }
     return this;
 }
+
+SchoolRoom.prototype = {
+    getID : function () {
+        return this.id;
+    },
+
+    setID : function (newId) {
+       try {
+           if (isFinite(newId) && +newId >= 100) {
+               this.id = parseInt(newId, 10);
+           } else {
+               throw new CustomPropertyError("ID not valid", newId);
+           }
+       } catch (e) {
+           // logMyErrors(e.message, e.name);
+       }
+    },
+
+    getName : function () {
+        return this.name;
+    },
+
+    setName : function (newName) {
+        try {
+            if (newName !== "" && newName.length <= 255) {
+                this.name = newName;
+            } else {
+                throw new CustomPropertyError("name not valid", newName);
+            }
+        } catch (e) {
+            // logMyErrors(e.message, e.name)
+        }
+    }
+};
