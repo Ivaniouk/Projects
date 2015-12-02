@@ -10,7 +10,7 @@ function CustomPropertyError(message, property) {
 
 function SchoolRoom(newId, newName) {
     try {
-        if (isFinite(newId) && +newId >= 100) {
+        if (isFinite(newId) && Number(newId) >= 100) { // Number(newId) ?
             this.id = parseInt(newId, 10);
         } else {
             this.id = 0;
@@ -36,7 +36,7 @@ SchoolRoom.prototype = {
 
     setID : function (newId) {
        try {
-           if (isFinite(newId) && +newId >= 100) {
+           if (isFinite(newId) && Number(newId) >= 100) {
                this.id = parseInt(newId, 10);
            } else {
                throw new CustomPropertyError("SchoolRoom ID not valid", newId);
