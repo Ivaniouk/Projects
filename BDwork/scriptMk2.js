@@ -6,7 +6,6 @@ function CustomPropertyError(message, property) {
     this.name = "CustomPropertyError";
 }
 
-
 /** ****************CLASSES*************************/
 
 function SchoolRoom(newId, newName) {
@@ -15,14 +14,14 @@ function SchoolRoom(newId, newName) {
             this.id = parseInt(newId, 10);
         } else {
             this.id = 0;
-            throw new CustomPropertyError("ID not valid", newId);
+            throw new CustomPropertyError("SchoolRoom ID not valid", newId);
         }
 
         if (newName !== "" && newName.length <= 255 && newName.length >= 3) {
             this.name = newName;
         } else {
             this.name = "unknown";
-            throw new CustomPropertyError("name not valid", newName);
+            throw new CustomPropertyError("SchoolRoom name not valid", newName);
         }
     } catch (e) {
         // logMyErrors(e.message, e.name);
@@ -40,7 +39,7 @@ SchoolRoom.prototype = {
            if (isFinite(newId) && +newId >= 100) {
                this.id = parseInt(newId, 10);
            } else {
-               throw new CustomPropertyError("ID not valid", newId);
+               throw new CustomPropertyError("SchoolRoom ID not valid", newId);
            }
        } catch (e) {
            // logMyErrors(e.message, e.name);
@@ -56,7 +55,7 @@ SchoolRoom.prototype = {
             if (newName !== "" && newName.length <= 255 && newName.length >= 3) {
                 this.name = newName;
             } else {
-                throw new CustomPropertyError("name not valid", newName);
+                throw new CustomPropertyError("SchoolRoom name not valid", newName);
             }
         } catch (e) {
             // logMyErrors(e.message, e.name)
