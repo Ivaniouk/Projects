@@ -18,7 +18,7 @@ function SchoolRoom(newId, newName) {
             throw new CustomPropertyError("ID not valid", newId);
         }
 
-        if (newName !== "" && newName.length <= 255) {
+        if (newName !== "" && newName.length <= 255 && newName.length >= 3) {
             this.name = newName;
         } else {
             this.name = "unknown";
@@ -53,7 +53,7 @@ SchoolRoom.prototype = {
 
     setName : function (newName) {
         try {
-            if (newName !== "" && newName.length <= 255) {
+            if (newName !== "" && newName.length <= 255 && newName.length >= 3) {
                 this.name = newName;
             } else {
                 throw new CustomPropertyError("name not valid", newName);
