@@ -6,7 +6,7 @@ function CustomPropertyError(message, property) {
     this.name = "CustomPropertyError";
 }
 
-/** ****************CLASSES*************************/
+/** ****************CLASS*************************/
 
 function SchoolRoom(newId, newName) {
     try {
@@ -35,15 +35,15 @@ SchoolRoom.prototype = {
     },
 
     setID : function (newId) {
-       try {
-           if (isFinite(newId) && Number(newId) >= 100) {
-               this.id = parseInt(newId, 10);
-           } else {
-               throw new CustomPropertyError("Setter SchoolRoom ID not valid", newId);
-           }
-       } catch (e) {
-           // logMyErrors(e.message, e.name);
-       }
+        try {
+            if (isFinite(newId) && Number(newId) >= 100) {
+                this.id = parseInt(newId, 10);
+            } else {
+                throw new CustomPropertyError("Setter SchoolRoom ID not valid", newId);
+            }
+        } catch (e) {
+            // logMyErrors(e.message, e.name);
+        }
     },
 
     getName : function () {
