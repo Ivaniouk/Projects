@@ -97,7 +97,7 @@ function SchoolRoom(id, type, name) {
 }
 
 SchoolRoom.prototype = Object.create(BaseClass.prototype);
-SchoolRoom.prototype.constructor = schoolRoom;
+SchoolRoom.prototype.constructor = SchoolRoom;
 
 /*******************************subject************************************************ */
 function Subject(id, type, name) {

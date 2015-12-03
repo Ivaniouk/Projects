@@ -29,6 +29,8 @@ function SchoolRoom(newId, newName) {
     return this;
 }
 
+/** ****************METHODS*************************/
+
 SchoolRoom.prototype = {
     getID : function () {
         return this.id;

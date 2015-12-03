@@ -23,6 +23,8 @@ function Subject(newId, newName) {
     return this;
 }
 
+/** ****************METHODS*************************/
+
 Subject.prototype = {
     getID : function () {
         return this.id;
