@@ -2,10 +2,10 @@
 
 /** ****************CLASS*************************/
 
-function LessonDay(newId, newLessonWeekId, newLessonWeekExemplar, newName, newLessonMAXcount) {
+function LessonDay(newId, newLessonWeekId, newLessonWeekobject, newName, newLessonMAXcount) {
    //  // ??
-    try {
-        this.LessonWeekExemplar = JSON.parse(newLessonWeekExemplar); //?
+    try {   //newLessonWeekobject JSONparse? How to catch an error here, I already throwing errors in the constructor
+        this.LessonWeekExemplar = new LessonWeek(newLessonWeekobject.id, newLessonWeekobject.number, newLessonWeekobject.name);
 
         if (isFinite(newId) && Number(newId) > 0) {
             this.id = parseInt(newId, 10);
@@ -82,9 +82,9 @@ LessonWeek.prototype = {
         return this.LessonWeekExemplar;
     },
 
-    setLessonWeekExemplar : function (newLessonWeekExemplar) {
+    setLessonWeekExemplar : function (newLessonWeekobject) {
         try {
-            this.LessonWeekExemplar = JSON.parse(newLessonWeekExemplar); //?
+            this.LessonWeekExemplar = new LessonWeek(newLessonWeekobject.id, newLessonWeekobject.number, newLessonWeekobject.name);
         } catch (e) {
             // logMyErrors(e.message, e.name);
         }
