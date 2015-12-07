@@ -7,18 +7,17 @@ function Subject(newId, newName) {
         if (isFinite(newId) && Number(newId) > 0) {
             this.id = parseInt(newId, 10);
         } else {
-            this.id = 0;
             throw new CustomPropertyError("Constructor - Subject ID not valid", newId);
         }
 
         if (newName !== "" && newName.length <= 255 && newName.length >= 3) {
             this.name = newName;
         } else {
-            this.name = "unknown";
             throw new CustomPropertyError("Constructor - Subject name not valid", newName);
         }
     } catch (e) {
         // logMyErrors(e.message, e.name);
+        throw e;
     }
     return this;
 }

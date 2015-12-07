@@ -3,39 +3,35 @@
 /** ****************CLASS*************************/
 
 function LessonDay(newId, newLessonWeekId, newLessonWeekobject, newName, newLessonMAXcount) {
-   //  // ??
-    try {   //newLessonWeekobject JSONparse? How to catch an error here, I already throwing errors in the constructor
+    try {
         this.LessonWeekExemplar = new LessonWeek(newLessonWeekobject.id, newLessonWeekobject.number, newLessonWeekobject.name);
 
         if (isFinite(newId) && Number(newId) > 0) {
             this.id = parseInt(newId, 10);
         } else {
-            this.id = 0;
             throw new CustomPropertyError("Constructor - LessonDay ID is not valid", newId);
         }
 
         if (isFinite(newLessonWeekId) && Number(newLessonWeekId) > 0) {
             this.lessonWeekId = parseInt(newLessonWeekId, 10);
         } else {
-            this.lessonWeekId = 0;
             throw new CustomPropertyError("Constructor - LessonDay newLessonWeekId is not valid", newLessonWeekId);
         }
 
         if (newName !== "" && newName.length <= 255 && newName.length >= 3) {
             this.name = newName;
         } else {
-            this.name = "unknown";
             throw new CustomPropertyError("Constructor - LessonDay newName is not valid", newName);
         }
 
         if (isFinite(newLessonMAXcount) && Number(newLessonMAXcount) > 0 && Number(newLessonMAXcount) < 4) {
             this.lessonMAXcount = parseInt(newLessonMAXcount, 10);
         } else {
-            this.lessonMAXcount = 0;
             throw new CustomPropertyError("Constructor - LessonDay newLessonMAXcount is not valid", newLessonMAXcount);
         }
     } catch (e) {
         // logMyErrors(e.message, e.name);
+        throw e;
     }
 
     return this;
