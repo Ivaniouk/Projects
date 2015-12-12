@@ -6,6 +6,17 @@ function CustomPropertyError(message, property) {
     this.name = "CustomPropertyError";
 }
 
+/** ****************Methods*************************/
+
+function SearchArray(arr, searchId) {
+    for (var i = 0; i < arr.length; i++) {
+        if(arr[i].id === searchId) {
+            return arr[i];
+        }
+    }
+    return null;
+}
+
 /** ****************CLASS*************************/
 
 function SchoolRoom(creationTrigger, newId, newName) {
@@ -23,7 +34,7 @@ function SchoolRoom(creationTrigger, newId, newName) {
                 throw new CustomPropertyError("Constructor - SchoolRoom name not valid", newName);
             }
         } else {
-            var requestedRoom = LocalDB.SchoolRoom[newId]; // треба додати адекватний серч
+            var requestedRoom = SearchArray(LocalDB.SchoolRoom, newId);
             if (requestedRoom) {
                 if (isFinite(requestedRoom.id) && Number(requestedRoom.id) >= 100) {
                     this.id = parseInt(requestedRoom.id, 10);
@@ -37,7 +48,7 @@ function SchoolRoom(creationTrigger, newId, newName) {
                     throw new CustomPropertyError("Constructor - SchoolRoom name in LocalDB is not valid", requestedRoom.name);
                 }
             } else {
-
+                //запит не асинхронний
                 var xhr = new XMLHttpRequest();
                 xhr.open('GET', 'api.php?controller=school_rooms&action=item&id=' + newId, false); // просто скопіював чужий запит, ще не знаю як формувати запит
                 xhr.send();
