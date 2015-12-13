@@ -6,76 +6,26 @@ function CustomPropertyError(message, property) {
     this.name = "CustomPropertyError";
 }
 
-/** ****************Methods*************************/
-
-function SearchArray(arr, searchId) {
-    for (var i = 0; i < arr.length; i++) {
-        if(arr[i].id === searchId) {
-            return arr[i];
-        }
-    }
-    return null;
+function logMyErrors( msg, text) {
+    //error log
 }
 
 /** ****************CLASS*************************/
 
 function SchoolRoom(creationTrigger, newId, newName) {
-    try {
-        if (creationTrigger) {
-            if (isFinite(newId) && Number(newId) >= 100) {
-                this.id = parseInt(newId, 10);
-            } else {
-                throw new CustomPropertyError("Constructor - SchoolRoom ID not valid", newId);
-            }
-
-            if (newName !== "" && newName.length <= 255 && newName.length >= 3) {
-                this.name = newName;
-            } else {
-                throw new CustomPropertyError("Constructor - SchoolRoom name not valid", newName);
-            }
+    if (creationTrigger) {
+        _CreateClassByUser( newId, newName);
+    } else {
+        var requestedRoom = SearchArray(newId); //need Object not array
+        if (requestedRoom) {
+            _CreateClassByLocalDB(requestedRoom);
         } else {
-            var requestedRoom = SearchArray(LocalDB.SchoolRoom, newId);
-            if (requestedRoom) {
-                if (isFinite(requestedRoom.id) && Number(requestedRoom.id) >= 100) {
-                    this.id = parseInt(requestedRoom.id, 10);
-                } else {
-                    throw new CustomPropertyError("Constructor - SchoolRoom ID in LocalDB is not valid", requestedRoom.id);
-                }
-
-                if (requestedRoom.name !== "" && requestedRoom.name.length <= 255 && requestedRoom.name.length >= 3) {
-                    this.name = requestedRoom.name;
-                } else {
-                    throw new CustomPropertyError("Constructor - SchoolRoom name in LocalDB is not valid", requestedRoom.name);
-                }
-            } else {
-                //запит не асинхронний
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'api.php?controller=school_rooms&action=item&id=' + newId, false); // просто скопіював чужий запит, ще не знаю як формувати запит
-                xhr.send();
-                if (xhr.status !== 200) {
-                    throw new CustomPropertyError("Constructor - SchoolRoom by " + newId + " ID does not exist", xhr.status);
-                } else {
-                    // фішка - якщо буду перевіряти перед тим як класти в локальну базу то можна не валідувати інфу з локальної Бази на коректність ? АЛЕ! локальна База ж глобальна ?
-                    requestedRoom = JSON.parse(xhr.responseText);
-                    if (isFinite(requestedRoom.id) && Number(requestedRoom.id) >= 100) {
-                        this.id = parseInt(requestedRoom.id, 10);
-                    } else {
-                        throw new CustomPropertyError("Constructor - SchoolRoom ID in outer_lDB is not valid", requestedRoom.id);
-                    }
-
-                    if (requestedRoom.name !== "" && requestedRoom.name.length <= 255 && requestedRoom.name.length >= 3) {
-                        this.name = requestedRoom.name;
-                    } else {
-                        throw new CustomPropertyError("Constructor - SchoolRoom name in outer_DB is not valid", requestedRoom.name);
-                    }
-                    LocalDB.SchoolRoom.push(requestedRoom);
-                }
+            //not asynchronous request
+            requestedRoom = _requestFromOuterBaseByID(newId);
+            if(requestedRoom) {
+                _CreateClassByOuterDB(requestedRoom);
             }
         }
-
-    } catch (e) {
-        // logMyErrors(e.message, e.name);
-        throw e;
     }
     return this;
 }
@@ -88,14 +38,10 @@ SchoolRoom.prototype = {
     },
 
     setID : function (newId) {
-        try {
-            if (isFinite(newId) && Number(newId) >= 100) {
-                this.id = parseInt(newId, 10);
-            } else {
-                throw new CustomPropertyError("Setter SchoolRoom ID not valid", newId);
-            }
-        } catch (e) {
-            // logMyErrors(e.message, e.name);
+        if (_validateID) {
+            this.id = parseInt(newId, 10);
+        } else {
+            logMyErrors("Setter SchoolRoom ID not valid", newId);
         }
     },
 
@@ -104,14 +50,86 @@ SchoolRoom.prototype = {
     },
 
     setName : function (newName) {
-        try {
-            if (newName !== "" && newName.length <= 255 && newName.length >= 3) {
-                this.name = newName;
-            } else {
-                throw new CustomPropertyError("Setter SchoolRoom name not valid", newName);
-            }
-        } catch (e) {
-            // logMyErrors(e.message, e.name)
+        if (_validateName) {
+            this.name = newName;
+        } else {
+            logMyErrors("Setter SchoolRoom name not valid", newName);
         }
+    },
+
+    _validateID : function (newId) {
+        return (isFinite(newId) && Number(newId) >= 100);
+    },
+
+    _validateName : function (newName) {
+        return (newName !== "" && newName.length <= 255 && newName.length >= 3);
+    },
+
+    _CreateClassByUser : function (newId, newName) {
+        if (_validateID(newId)) {
+            this.id = parseInt(newId, 10);
+        } else {
+            logMyErrors("Constructor - SchoolRoom ID not valid", newId);
+            return;
+        }
+
+        if (_validateName(newName)) {
+            this.name = newName;
+        } else {
+            logMyErrors("Constructor - SchoolRoom name not valid", newName);
+        }
+    },
+
+    _CreateClassByLocalDB : function (requestedRoom) {
+        if (requestedRoom) {
+            if (_validateID(requestedRoom.id)) {
+                this.id = parseInt(requestedRoom.id, 10);
+            } else {
+                logMyErrors("Constructor - SchoolRoom ID in LocalDB is not valid", requestedRoom.id);
+                return;
+            }
+
+            if (_validateName(requestedRoom.name)) {
+                this.name = requestedRoom.name;
+            } else {
+                logMyErrors("Constructor - SchoolRoom name in LocalDB is not valid", requestedRoom.name);
+            }
+        }
+    },
+    //TODO need asynchronous request
+    _requestFromOuterBaseByID : function (id) { //url ???
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'api.php?controller=school_rooms&action=item&id=' + newId, false); // not sure its valid request
+        xhr.send();
+        if (xhr.status !== 200) {
+            logMyErrors("Constructor - SchoolRoom by " + newId + " ID does not exist", xhr.status);
+            return null;
+        }
+        return JSON.parse(xhr.responseText);
+    },
+
+    _CreateClassByOuterDB : function (requestedRoom) {
+        if (_validateID(requestedRoom.id)) {
+            this.id = parseInt(requestedRoom.id, 10);
+        } else {
+            logMyErrors("Constructor - SchoolRoom ID in outer_lDB is not valid", requestedRoom.id);
+        }
+
+        if (_validateName(requestedRoom.name)) {
+            this.name = requestedRoom.name;
+        } else {
+            logMyErrors("Constructor - SchoolRoom name in outer_DB is not valid", requestedRoom.name);
+        }
+        //TODO change to object
+        LocalDB.SchoolRoom.push(requestedRoom);
+    },
+    //TODO check LocalDB.SchoolRooms (array) functionality
+    SearchArray : function (searchId) {
+        for (var i = 0; i < LocalDB.SchoolRooms.length; i++) {
+            if (arr[i].id === searchId) {
+                return arr[i];
+            }
+        }
+        return false;
     }
 };
