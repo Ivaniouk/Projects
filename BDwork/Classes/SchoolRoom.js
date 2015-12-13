@@ -10,13 +10,17 @@ function logMyErrors( msg, text) {
     //error log
 }
 
+//TODO LocalDB global or not
+//TODO Add SaveToDB function
+//TODO check LocalDB.SchoolRooms (array) functionality
+//TODO need asynchronous request
 /** ****************CLASS*************************/
 
 function SchoolRoom(creationTrigger, newId, newName) {
     if (creationTrigger) {
         _CreateClassByUser( newId, newName);
     } else {
-        var requestedRoom = SearchArray(newId); //need Object not array
+        var requestedRoom = _SearchArray(newId);
         if (requestedRoom) {
             _CreateClassByLocalDB(requestedRoom);
         } else {
@@ -97,7 +101,7 @@ SchoolRoom.prototype = {
         }
     },
     //TODO need asynchronous request
-    _requestFromOuterBaseByID : function (id) { //url ???
+    _requestFromOuterBaseByID : function (newId) {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'api.php?controller=school_rooms&action=item&id=' + newId, false); // not sure its valid request
         xhr.send();
@@ -120,14 +124,13 @@ SchoolRoom.prototype = {
         } else {
             logMyErrors("Constructor - SchoolRoom name in outer_DB is not valid", requestedRoom.name);
         }
-        //TODO change to object
-        LocalDB.SchoolRoom.push(requestedRoom);
+        LocalDB.SchoolRooms.push(requestedRoom);
     },
     //TODO check LocalDB.SchoolRooms (array) functionality
-    SearchArray : function (searchId) {
+    _SearchArray : function (searchId) {
         for (var i = 0; i < LocalDB.SchoolRooms.length; i++) {
-            if (arr[i].id === searchId) {
-                return arr[i];
+            if (LocalDB.SchoolRooms[i].id === searchId) {
+                return LocalDB.SchoolRooms[i];
             }
         }
         return false;
