@@ -10,8 +10,6 @@ function logMyErrors( msg, text) {
     //error log
 }
 
-//TODO LocalDB global or not
-//TODO Add SaveToDB function
 //TODO check LocalDB.SchoolRooms (array) functionality
 //TODO need asynchronous request
 /** ****************CLASS*************************/
