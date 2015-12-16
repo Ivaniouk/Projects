@@ -2,9 +2,7 @@
 
 /** ****************CLASS*************************/
 function C_SchoolRoomManager() {
-
     this._cashPool = {};
-
     return this;
 }
 
@@ -32,13 +30,9 @@ C_SchoolRoomManager.prototype = {
         return new C_SchoolRoom(roomObject.roomId, roomObject.roomName);
     },
 
-    _request : function (roomId, loadAll) {
-        var url = "valid/request:" + roomId;
-        if (loadAll) {
-            url = "valid/request:ALL";
-        }
+    _requestRoom : function (roomId) {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", url, true);
+        xhr.open("GET", "valid/request:" + roomId, true);
         xhr.send();
         xhr.onreadystatechange = function () {
             return xhr;
@@ -46,8 +40,8 @@ C_SchoolRoomManager.prototype = {
     },
 
     _loadRoom : function (roomId) {
-        return new Promise(function(_createRoom) {
-            var xhr = _request(roomId);
+        return new Promise(function (_createRoom) {
+            var xhr = _requestRoom(roomId);
             if (xhr.status === 200) {
                 _createRoom(JSON.parse(xhr.responseText));
             }
@@ -55,8 +49,17 @@ C_SchoolRoomManager.prototype = {
         });
     },
 
+    _requestAllRooms : function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "valid/request:ALL", true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            return xhr;
+        };
+    },
+
     _loadAllRooms : function () {
-        var xhr = _request("", true);
+        var xhr = _requestAllRooms();
         if (xhr.status === 200) {
             return JSON.parse(xhr.responseText);
         }
