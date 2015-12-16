@@ -59,10 +59,13 @@ C_SchoolRoomManager.prototype = {
     },
 
     _loadAllRooms : function () {
-        var xhr = _requestAllRooms();
-        if (xhr.status === 200) {
-            return JSON.parse(xhr.responseText);
-        }
-        return xhr.status;
+        return new Promise(function (_createRoom) {
+            var xhr = _requestAllRooms();
+            if (xhr.status === 200) {
+               return JSON.parse(xhr.responseText);
+            }
+            return xhr.status;
+        });
+
     }
 };
