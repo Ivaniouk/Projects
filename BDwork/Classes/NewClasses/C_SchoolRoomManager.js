@@ -11,14 +11,18 @@ function C_SchoolRoomManager() {
 /** ****************METHODS*************************/
 
 C_SchoolRoomManager.prototype = {
-    getRoom : function (roomObject, trigger) {
+    getOrCreateRoom : function (roomObject, trigger) {
         var roomInstance;
         if (trigger) {
             roomInstance = _createRoom(roomObject);
+            this._cashPool[roomObject.roomId] = instance;
         } else {
             roomInstance = _cashPool(roomObject.roomId);
             if (!roomInstance) {
                 roomInstance = _loadRoom(roomObject.roomId);
+                if (roomInstance === 400) {
+                    this._cashPool[roomObject.roomId] = instance;
+                }
             }
         }
         return roomInstance;
@@ -47,7 +51,7 @@ C_SchoolRoomManager.prototype = {
             if (xhr.status === 200) {
                 _createRoom(JSON.parse(xhr.responseText));
             }
-            return xhr.status + " " + xhr.responseText;
+            return xhr.status;
         });
     },
 
@@ -56,6 +60,6 @@ C_SchoolRoomManager.prototype = {
         if (xhr.status === 200) {
             return JSON.parse(xhr.responseText);
         }
-        return xhr.status + " " + xhr.responseText;
+        return xhr.status;
     }
 };
