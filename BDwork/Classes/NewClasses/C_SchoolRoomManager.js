@@ -1,7 +1,7 @@
 "use strict";
 
 /** ****************CLASS*************************/
-function C_SchoolRoomManager(OuterArray) {
+function C_SchoolRoomManager() {
 
     this._cashPool = {};
 
@@ -12,7 +12,7 @@ function C_SchoolRoomManager(OuterArray) {
 
 C_SchoolRoomManager.prototype = {
     _getRoomInstance : function (roomId, roomName) {
-        var instance = _searchCashPool(roomId);
+        var instance = _cashPool(roomId);
         if (!instance) {
             instance = new C_SchoolRoom(roomId, roomName);
             this._cashPool[roomId] = instance;
@@ -21,7 +21,7 @@ C_SchoolRoomManager.prototype = {
     },
 
     _searchCashPool : function () {
-        return this._cashPool(roomId);
+
     },
 
     _getRoomFromOuterBase : function () {
