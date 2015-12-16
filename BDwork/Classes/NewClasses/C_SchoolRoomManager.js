@@ -11,20 +11,51 @@ function C_SchoolRoomManager() {
 /** ****************METHODS*************************/
 
 C_SchoolRoomManager.prototype = {
-    _getRoomInstance : function (roomId, roomName) {
-        var instance = _cashPool(roomId);
-        if (!instance) {
-            instance = new C_SchoolRoom(roomId, roomName);
-            this._cashPool[roomId] = instance;
+    getRoom : function (roomObject, trigger) {
+        var roomInstance;
+        if (trigger) {
+            roomInstance = _createRoom(roomObject);
+        } else {
+            roomInstance = _cashPool(roomObject.roomId);
+            if (!roomInstance) {
+                roomInstance = _loadRoom(roomObject.roomId);
+            }
         }
-        return instance;
+        return roomInstance;
     },
 
-    _searchCashPool : function () {
-
+    _createRoom : function (roomObject) {
+        return new C_SchoolRoom(roomObject.roomId, roomObject.roomName);
     },
 
-    _getRoomFromOuterBase : function () {
+    _request : function (roomId, loadAll) {
+        var url = "valid/request:" + roomId;
+        if (loadAll) {
+            url = "valid/request:ALL";
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            return xhr;
+        };
+    },
 
+    _loadRoom : function (roomId) {
+        return new Promise(function(_createRoom) {
+            var xhr = _request(roomId);
+            if (xhr.status === 200) {
+                _createRoom(JSON.parse(xhr.responseText));
+            }
+            return xhr.status + " " + xhr.responseText;
+        });
+    },
+
+    _loadAllRooms : function () {
+        var xhr = _request("", true);
+        if (xhr.status === 200) {
+            return JSON.parse(xhr.responseText);
+        }
+        return xhr.status + " " + xhr.responseText;
     }
 };
