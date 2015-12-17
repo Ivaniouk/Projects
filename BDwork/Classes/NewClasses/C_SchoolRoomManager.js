@@ -17,7 +17,7 @@ C_SchoolRoomManager.prototype = {
             roomInstance = _cashPool(roomObject.roomId);
             if (!roomInstance) {
                 roomInstance = _loadRoom(roomObject.roomId);
-                if (roomInstance === 400) {
+                if (roomInstance === 200) {
                     this._cashPool[roomObject.roomId] = instance;
                 }
             }

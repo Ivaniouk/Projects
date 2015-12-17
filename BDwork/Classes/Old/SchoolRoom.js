@@ -9,9 +9,6 @@ function CustomPropertyError(message, property) {
 function logMyErrors( msg, text) {
     //error log
 }
-
-//TODO check LocalDB.SchoolRooms (array) functionality
-//TODO need asynchronous request
 /** ****************CLASS*************************/
 
 function SchoolRoom(creationTrigger, newId, newName) {
