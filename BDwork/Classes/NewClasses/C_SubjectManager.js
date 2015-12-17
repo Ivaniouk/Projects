@@ -44,7 +44,7 @@ C_SubjectManager.prototype = {
             return xhr.status;
         });
     },
-
+    //TODO Make ONE function LoadAll
     _requestAllSubjects : function () {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "valid/request:ALL", true);
@@ -54,7 +54,7 @@ C_SubjectManager.prototype = {
         };
     },
 
-    _loadAllSubjects : function () {
+    _loadAllSubjects : function () { // is this wrong?
         return new Promise(function () {
             var xhr = _requestAllSubjects();
             if (xhr.status === 200) {

@@ -47,7 +47,7 @@ C_SchoolRoomManager.prototype = {
             return xhr.status;
         });
     },
-
+    //TODO Make ONE function LoadAll
     _requestAllRooms : function () {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "valid/request:ALL", true);
@@ -58,7 +58,7 @@ C_SchoolRoomManager.prototype = {
     },
 
     _loadAllRooms : function () {
-        return new Promise(function (_createRoom) {
+        return new Promise(function () { // is this wrong?
             var xhr = _requestAllRooms();
             if (xhr.status === 200) {
                return JSON.parse(xhr.responseText);
