@@ -47,24 +47,15 @@ C_SchoolRoomManager.prototype = {
             return xhr.status;
         });
     },
-    //TODO Make ONE function LoadAll
-    _requestAllRooms : function () {
+
+    _loadAllRooms : function () {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "valid/request:ALL", true);
         xhr.send();
         xhr.onreadystatechange = function () {
-            return xhr;
+            return JSON.parse(xhr.responseText);
         };
-    },
-
-    _loadAllRooms : function () {
-        return new Promise(function () { // is this wrong?
-            var xhr = _requestAllRooms();
-            if (xhr.status === 200) {
-               return JSON.parse(xhr.responseText);
-            }
-            return xhr.status;
-        });
+        return xhr.status;
     },
 
     _saveToOuterBase : function (roomObject) {

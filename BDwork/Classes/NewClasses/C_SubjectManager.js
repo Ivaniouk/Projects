@@ -44,24 +44,15 @@ C_SubjectManager.prototype = {
             return xhr.status;
         });
     },
-    //TODO Make ONE function LoadAll
-    _requestAllSubjects : function () {
+
+    _loadAllSubjects : function () {
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "valid/request:ALL", true);
         xhr.send();
         xhr.onreadystatechange = function () {
-            return xhr;
+            return JSON.parse(xhr.responseText);
         };
-    },
-
-    _loadAllSubjects : function () { // is this wrong?
-        return new Promise(function () {
-            var xhr = _requestAllSubjects();
-            if (xhr.status === 200) {
-                return JSON.parse(xhr.responseText);
-            }
-            return xhr.status;
-        });
+        return xhr.status;
     },
 
     _saveToOuterBase : function (Object) {
