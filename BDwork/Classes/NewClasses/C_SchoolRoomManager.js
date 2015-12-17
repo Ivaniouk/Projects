@@ -37,10 +37,12 @@ C_SchoolRoomManager.prototype = {
             return xhr;
         };
     },
-
+    //TODO fix this function
     _loadRoom : function (id) {
         return new Promise(function (_createRoom) {
-            var xhr = _requestRoom(roomId);
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'valid/request:' + id, false)
+            xhr.send();
             if (xhr.status === 200) {
                 _createRoom(JSON.parse(xhr.responseText));
             }
