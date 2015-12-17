@@ -9,36 +9,36 @@ function C_SchoolRoomManager() {
 /** ****************METHODS*************************/
 
 C_SchoolRoomManager.prototype = {
-    getOrCreateRoom : function (roomObject, trigger) {
+    getOrCreateRoom : function (Object, trigger) {
         var roomInstance;
         if (trigger) {
-            roomInstance = _createRoom(roomObject);
+            roomInstance = _createRoom(Object);
         } else {
-            roomInstance = _cashPool(roomObject.roomId);
+            roomInstance = _cashPool(Object.id);
             if (!roomInstance) {
-                roomInstance = _loadRoom(roomObject.roomId);
+                roomInstance = _loadRoom(Object.id);
                 if (roomInstance === 200) {
-                    this._cashPool[roomObject.roomId] = instance;
+                    this._cashPool[Object.id] = instance;
                 }
             }
         }
         return roomInstance;
     },
 
-    _createRoom : function (roomObject) {
-        return new C_SchoolRoom(roomObject.roomId, roomObject.roomName);
+    _createRoom : function (Object) {
+        return new C_SchoolRoom(Object.id, Object.name);
     },
 
-    _requestRoom : function (roomId) {
+    _requestRoom : function (id) {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "valid/request:" + roomId, true);
+        xhr.open("GET", "valid/request:" + id, true);
         xhr.send();
         xhr.onreadystatechange = function () {
             return xhr;
         };
     },
 
-    _loadRoom : function (roomId) {
+    _loadRoom : function (id) {
         return new Promise(function (_createRoom) {
             var xhr = _requestRoom(roomId);
             if (xhr.status === 200) {

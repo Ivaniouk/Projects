@@ -11,11 +11,11 @@ C_SubjectManager.prototype = {
         if (trigger) {
             subjectInstance = _createInstance(Object);
         } else {
-            subjectInstance = _cashPool(Object.Id);
+            subjectInstance = _cashPool(Object.id);
             if (!subjectInstance) {
-                subjectInstance = _loadSubject(Object.Id);
+                subjectInstance = _loadSubject(Object.id);
                 if (subjectInstance === 200) {
-                    this._cashPool[Object.Id] = subjectInstance;
+                    this._cashPool[Object.id] = subjectInstance;
                 }
             }
         }
