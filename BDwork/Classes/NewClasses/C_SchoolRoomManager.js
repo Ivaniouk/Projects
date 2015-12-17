@@ -13,7 +13,6 @@ C_SchoolRoomManager.prototype = {
         var roomInstance;
         if (trigger) {
             roomInstance = _createRoom(roomObject);
-            this._cashPool[roomObject.roomId] = instance;
         } else {
             roomInstance = _cashPool(roomObject.roomId);
             if (!roomInstance) {
@@ -66,6 +65,19 @@ C_SchoolRoomManager.prototype = {
             }
             return xhr.status;
         });
+    },
 
+    _saveToOuterBase : function (roomObject) {
+        this._cashPool[roomObject.roomId] = _createRoom(roomObject);
+        var jsonRoom = JSON.stringify(roomObject);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", 'valid/POST', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (this.readyState !== 200) {
+                return xhr.status;
+            }
+        };
+        xhr.send(jsonRoom);
     }
 };
