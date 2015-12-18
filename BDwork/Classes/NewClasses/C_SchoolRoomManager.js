@@ -1,5 +1,11 @@
 "use strict";
+function LogServerFailures(xhr) {
+    //save response text + time
+    return xhr.status;
+}
+
 //TODO how to kill an instance?
+//TODO wrong Promises
 /** ****************CLASS*************************/
 function C_SchoolRoomManager(url) {
     this._url = url;
@@ -23,22 +29,33 @@ C_SchoolRoomManager.prototype = {
     createInstance: function (Object) {
         return new C_SchoolRoom(Object.id, Object.name);
     },
-    //TODO do we need this function?
+    /** WRONG METHOD*/
     removeInstance : function (id) {
-
+        var url = this._url;
+        return new Promise(function (_removeFromPool, LogServerFailures) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url + "valid/POST", false);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            if (xhr.status === 200) {
+                _removeFromPool(id);
+            } else {
+                LogServerFailures(xhr);
+            }
+        });
     },
 
     //TODO we need a timer for a request
     _loadInstanceById : function (id) {
         var url = this._url;
-        return new Promise(function (createInstance) {
+        return new Promise(function (createInstance, LogServerFailures) {
             var xhr = new XMLHttpRequest();
             xhr.open('GET', url + "request" + id, false);
             xhr.send();
             if (xhr.status === 200) {
                 createInstance(JSON.parse(xhr.responseText));
+            } else {
+                LogServerFailures(xhr);
             }
-            return xhr.status;
         });
     },
 
@@ -66,7 +83,7 @@ C_SchoolRoomManager.prototype = {
         xhr.send(jsonObj);
     },
     //TODO Remove object from pool??
-    _removeFromOuterBase : function (id) {
+    _removeFromPool : function (id) {
 
     }
 };
