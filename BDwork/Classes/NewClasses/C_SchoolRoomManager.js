@@ -28,7 +28,7 @@ C_SchoolRoomManager.prototype = {
     getAll : function () {
         _loadAllInstances();
     },
-
+    //TODO wrong way (
     createInstance : function (name) {
         var obj = _loadInstanceByName(name);
         if (obj.id) {

@@ -45,41 +45,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="C_SchoolRoom.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_SchoolRoom.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="C_SchoolRoomManager.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="C_SchoolRoomManager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_SchoolRoomManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.8452656">
-              <caret line="94" column="54" selection-start-line="94" selection-start-column="54" selection-end-line="94" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="56" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="C_Subjects.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_Subjects.js">
+      <file leaf-file-name="RoomManager.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Classes/NewClasses/RoomManager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="C_SubjectManager.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_SubjectManager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.05711086">
+              <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -104,8 +84,9 @@
         <option value="$PROJECT_DIR$/Classes/Old/SchoolRoom.js" />
         <option value="$PROJECT_DIR$/Classes/NewClasses/C_SubjectManager.js" />
         <option value="$PROJECT_DIR$/Classes/Old/BaseClass.js" />
-        <option value="$PROJECT_DIR$/Classes/NewClasses/C_SchoolRoomManager.js" />
         <option value="$PROJECT_DIR$/Classes/NewClasses/C_SchoolRoom.js" />
+        <option value="$PROJECT_DIR$/Classes/NewClasses/C_SchoolRoomManager.js" />
+        <option value="$PROJECT_DIR$/Classes/NewClasses/RoomManager.js" />
       </list>
     </option>
   </component>
@@ -149,6 +130,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -206,7 +188,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -324,27 +305,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Classes/Old/BaseClass.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#194#1253#0" expanded="false" />
-            <element signature="e#1352#3972#0" expanded="false" />
-            <element signature="e#4013#4578#0" expanded="false" />
-            <element signature="e#4674#7465#0" expanded="false" />
-            <element signature="e#7689#9926#0" expanded="false" />
-            <element signature="e#10013#13951#0" expanded="false" />
-            <element signature="e#13994#14458#0" expanded="false" />
-            <element signature="e#14560#17209#0" expanded="false" />
-            <element signature="e#17248#17680#0" expanded="false" />
-            <element signature="e#17770#20270#0" expanded="false" />
-            <element signature="e#23516#23948#0" expanded="false" />
-            <element signature="e#24038#27428#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Classes/Old/LessonWeek.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -639,14 +599,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_Subjects.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Classes/Old/LessonDay.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.0179172">
@@ -661,18 +613,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_SubjectManager.js">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3325868">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_Subjects.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_SubjectManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.124300115">
           <caret line="24" column="11" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript5.js">
+    <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_SchoolRoom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3325868">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.48600224">
+          <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -698,18 +666,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_SchoolRoom.js">
+    <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_SchoolRoomManager.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="31" selection-start-line="37" selection-start-column="31" selection-end-line="37" selection-end-column="31" />
+          <caret line="40" column="56" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Classes/NewClasses/C_SchoolRoomManager.js">
+    <entry file="file://$PROJECT_DIR$/Classes/NewClasses/RoomManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8452656">
-          <caret line="94" column="54" selection-start-line="94" selection-start-column="54" selection-end-line="94" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.05711086">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
           <folding />
         </state>
       </provider>
