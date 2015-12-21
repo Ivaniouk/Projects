@@ -14,7 +14,7 @@ function C_SchoolRoomManager(url) {
 /** ****************METHODS*************************/
 
 C_SchoolRoomManager.prototype = {
-    /** Search Instance in the _cashPool -> looking in the server -> saves loaded Room to the _cashPool*/
+    /** Search Instance in the _cashPool -> looking on the server -> saves loaded Room to the _cashPool*/
     getRoom : function (object) { //only by ID? Or we need one more function GetRoom by name?
         var Instance = _cashPool(object.id);
         if (!Instance) {
