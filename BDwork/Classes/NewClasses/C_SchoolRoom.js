@@ -35,7 +35,7 @@ C_SchoolRoom.prototype = {
     },
 
     _validateID : function (newId) {
-        return (isFinite(newId) && Number(newId) >= 100);
+        return (isFinite(newId));
     },
 
     _validateName : function (newName) {

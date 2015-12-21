@@ -4,8 +4,6 @@ function LogServerFailures(xhr) {
     return xhr.status;
 }
 
-//TODO how to kill an instance?
-//TODO wrong Promises
 /** ****************CLASS*************************/
 function C_SchoolRoomManager(url) {
     this._url = url;
@@ -15,7 +13,8 @@ function C_SchoolRoomManager(url) {
 
 /** ****************METHODS*************************/
 C_SchoolRoomManager.prototype = {
-    getInstance: function (Object) {
+
+    getInstance : function (Object) {
         var Instance = _cashPool(Object.id);
         if (!Instance) {
             Instance = _loadInstanceById(Object.id);
@@ -26,33 +25,60 @@ C_SchoolRoomManager.prototype = {
         return Instance;
     },
 
-    createInstance: function (Object) {
+    getAll : function () {
+        _loadAllInstances();
+    },
+
+    createInstance : function (name) {
+        var obj = _loadInstanceByName(name);
+        if (obj.id) {
+            return obj;
+        }
+
+    },
+
+    _createLoadedInstance: function (Object) {
         return new C_SchoolRoom(Object.id, Object.name);
     },
-    /** WRONG METHOD*/
+    //TODO we need a timer for a request
     removeInstance : function (id) {
         var url = this._url;
         return new Promise(function (_removeFromPool, LogServerFailures) {
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", url + "valid/POST", false);
+            xhr.open("POST", url + "valid/DELETE:" + id, false);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             if (xhr.status === 200) {
                 _removeFromPool(id);
             } else {
                 LogServerFailures(xhr);
             }
+            xhr.send("");
         });
     },
 
     //TODO we need a timer for a request
     _loadInstanceById : function (id) {
         var url = this._url;
-        return new Promise(function (createInstance, LogServerFailures) {
+        return new Promise(function (_createLoadedInstance, LogServerFailures) {
             var xhr = new XMLHttpRequest();
             xhr.open('GET', url + "request" + id, false);
             xhr.send();
             if (xhr.status === 200) {
-                createInstance(JSON.parse(xhr.responseText));
+                _createLoadedInstance(JSON.parse(xhr.responseText));
+            } else {
+                LogServerFailures(xhr);
+            }
+        });
+    },
+
+    _loadInstanceByName : function (name) {
+        var url = this._url;
+        return new Promise(function (_createLoadedInstance, LogServerFailures) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url + "request" + name, false);
+            xhr.send();
+            if (xhr.status === 200) {
+                _createLoadedInstance(JSON.parse(xhr.responseText));
             } else {
                 LogServerFailures(xhr);
             }
@@ -60,17 +86,22 @@ C_SchoolRoomManager.prototype = {
     },
 
     _loadAllInstances : function () {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", this._url + "request:ALL", true);
-        xhr.send();
-        xhr.onreadystatechange = function () {
-            return JSON.parse(xhr.responseText);
-        };
-        return xhr.status;
-    },
+        var url = this._url;
+        return new Promise(function (_createLoadedInstance, LogServerFailures) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url + "request:ALL", false);
+            xhr.send();
+            if (xhr.status === 200) {
+                //return JSON.parse(xhr.responseText);
+            } else {
+                LogServerFailures(xhr);
+            }
+        });
 
+    },
+    //TODO Wrong method
     _saveToOuterBase : function (Object) {
-        this._cashPool[Object.id] = createInstance(Object);
+        this._cashPool[Object.id] = _createLoadedInstance(Object);
         var jsonObj = JSON.stringify(Object);
         var xhr = new XMLHttpRequest();
         xhr.open("POST", this._url + "valid/POST", true);
@@ -82,7 +113,7 @@ C_SchoolRoomManager.prototype = {
         };
         xhr.send(jsonObj);
     },
-    //TODO Remove object from pool??
+    //TODO Remove object from pool
     _removeFromPool : function (id) {
 
     }
