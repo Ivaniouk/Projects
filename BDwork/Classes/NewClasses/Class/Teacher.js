@@ -2,8 +2,8 @@
 
 /** ****************CLASS*************************/
 
-function Teacher(newId, newName, newMidName, newLastName) {
-    _CreateClass(newId, newName, newMidName, newLastName);
+function Teacher(object) {
+    _CreateClass(object.newId, object.newName, object.newMidName, object.newLastName);
     return this;
 }
 

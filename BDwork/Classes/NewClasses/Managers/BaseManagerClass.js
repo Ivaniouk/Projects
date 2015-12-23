@@ -15,7 +15,7 @@ function BaseManagerClass(url) {
 
 BaseManagerClass.prototype = {
     /** Search Instance in the _cashPool -> looking on the server -> saves loaded Room to the _cashPool*/
-    getInstance : function (object) { //only by ID? Or we need one more function GetRoom by name?
+    getInstance : function (object) { //only by ID? Or we need one more function Get by name?
         var Instance = _cashPool(object.id);
         if (!Instance) {
             Instance = _loadInstanceById(object.id);
@@ -88,16 +88,16 @@ BaseManagerClass.prototype = {
             xhr.onerror = function () {
                 LogServerFailures(xhr.status);
             };
-            xhr.send(""); // Empty POST for deletion -> то Валентин так сказав я ні при чому! =)
+            xhr.send(""); // Empty POST for deletion -> то Валентин так сказав
         });
     },
 
-    /** Creates new instance -> adds it to the _cashPool -> returns instance */
+    /** Creates new instance -> adds it to the _cashPool -> returns instance
     _createInstance : function (object) {
         var instance = new SchoolRoom(object); //TODO How to make universal creator
         this._cashPool[object.id] = instance;
         return instance;
-    },
+    },*/
     /** copy all instances from server to _cashPool*/
     _fillPool : function (object) {
         for (var attr in object) {
