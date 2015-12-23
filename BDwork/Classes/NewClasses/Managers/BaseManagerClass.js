@@ -1,7 +1,7 @@
 "use strict";
 function LogServerFailures(xhr) {
     //save response text + time
-    return xhr.status; //return null?
+    return xhr.status;
 }
 
 /** ****************CLASS*************************/
@@ -15,7 +15,7 @@ function BaseManagerClass(url) {
 
 BaseManagerClass.prototype = {
     /** Search Instance in the _cashPool -> looking on the server -> saves loaded Room to the _cashPool*/
-    getInstance : function (object) { //only by ID? Or we need one more function Get by name?
+    getInstance : function (object) {
         var Instance = _cashPool(object.id);
         if (!Instance) {
             Instance = _loadInstanceById(object.id);
@@ -51,7 +51,7 @@ BaseManagerClass.prototype = {
         var url = this._url;
         return new Promise(function (_changeObjectInPool, LogServerFailures) {
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', url + "/request/change:" + object, false);
+            xhr.open('POST', url + "/request/change:" + object.id, false);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 if (this.status >= 200 && this.status < 300) {
@@ -69,14 +69,14 @@ BaseManagerClass.prototype = {
 
     /** Kills instance in the pool*/
     _deleteFromPool : function (id) {
-        delete this._cashPool[id]; // ≥ тут € забув €к ти по€снював про видаленн€ (дуже п≥ч€льний смайл)
+        delete this._cashPool[id];
     },
-    /**POST. Sends ID to server -> Server looks for instance with this ID -> server returns result*/
+    /**DELETE. Sends ID to server -> Server looks for instance with this ID -> server returns result*/
     _deleteFromServerBase : function (id) {
         var url = this._url;
         return new Promise(function (_deleteFromPool, LogServerFailures) {
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', url + "/request:" + id, false);
+            xhr.open("DELETE", url + "/request:" + id, false);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 if (this.status >= 200 && this.status < 300) {
@@ -88,7 +88,7 @@ BaseManagerClass.prototype = {
             xhr.onerror = function () {
                 LogServerFailures(xhr.status);
             };
-            xhr.send(""); // Empty POST for deletion -> то ¬алентин так сказав
+            xhr.send("");
         });
     },
 
@@ -102,7 +102,7 @@ BaseManagerClass.prototype = {
     _fillPool : function (object) {
         for (var attr in object) {
             if (object.hasOwnProperty(attr)) {
-                this._cashPool[attr] = object[attr]; //this._cashPool[object.id] = object[attr] ???
+                this._cashPool[object.id] = object[attr];
             }
         }
     },
