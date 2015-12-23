@@ -2,8 +2,8 @@
 
 /** ****************CLASS*************************/
 
-function BaseClass(newId, newName) {
-    _CreateClass(newId, newName);
+function BaseClass(object) {
+    _CreateClass(object.id, object.name);
     return this;
 }
 

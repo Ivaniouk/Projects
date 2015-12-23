@@ -94,7 +94,7 @@ BaseManagerClass.prototype = {
 
     /** Creates new instance -> adds it to the _cashPool -> returns instance */
     _createInstance : function (object) {
-        var instance = new C_SchoolRoom(object.id, object.name);
+        var instance = new SchoolRoom(object.id, object.name); //TODO How to make universal creator
         this._cashPool[object.id] = instance;
         return instance;
     },
