@@ -1,12 +1,12 @@
 "use strict";
 /** ****************CLASS*************************/
-function C_Subject(newId, newName) {
+function Subject(newId, newName) {
     _CreateClass(newId, newName);
     return this;
 }
 /** ****************METHODS*************************/
 
-C_Subject.prototype = {
+Subject.prototype = {
     getID : function () {
         return this.id;
     },

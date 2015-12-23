@@ -2,14 +2,14 @@
 
 /** ****************CLASS*************************/
 
-function C_SchoolRoom(newId, newName) {
+function SchoolRoom(newId, newName) {
     _CreateClass(newId, newName);
     return this;
 }
 
 /** ****************METHODS*************************/
 
-C_SchoolRoom.prototype = {
+SchoolRoom.prototype = {
     getID : function () {
         return this.id;
     },
