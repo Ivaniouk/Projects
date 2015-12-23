@@ -38,6 +38,34 @@ C_SchoolRoomManager.prototype = {
     getAllRooms : function () {
         return _loadAllRooms();
     },
+    /** Returns promise to change a room*/
+    changeRoom : function (object) {
+        return _changeObjectRequest(object);
+    },
+    /** rewrites room in the pool*/
+    _changeObjectInPool : function (object) {
+        this._cashPool[object.id] = object;
+    },
+    /**POST. Sends objest to server -> Server looks for instance with this ID -> server changes object in DB -> server sends back the object*/
+    _changeObjectRequest : function (object) {
+        var url = this._url;
+        return new Promise(function (_changeObjectInPool, LogServerFailures) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', url + "/request/change:" + object, false);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+                if (this.status >= 200 && this.status < 300) {
+                    _changeObjectInPool(JSON.parse(xhr.responseText));
+                } else {
+                    LogServerFailures(xhr.status);
+                }
+            };
+            xhr.onerror = function () {
+                LogServerFailures(xhr.status);
+            };
+            xhr.send(JSON.stringify(object));
+        });
+    },
 
     /** Kills instance in the pool*/
     _deleteFromPool : function (id) {
@@ -74,7 +102,7 @@ C_SchoolRoomManager.prototype = {
     _fillPool : function (object) {
         for (var attr in object) {
             if (object.hasOwnProperty(attr)) {
-                this._cashPool[attr] = object[attr];
+                this._cashPool[attr] = object[attr]; //this._cashPool[object.id] = object[attr] ???
             }
         }
     },
