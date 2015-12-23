@@ -35,8 +35,8 @@ C_SchoolRoomManager.prototype = {
         return _deleteFromServerBase(object.id);
     },
     /** Returns promise to load all rooms*/
-    getAllRooms : function () { //private or public ?
-        return _getAllRooms();
+    getAllRooms : function () {
+        return _loadAllRooms();
     },
 
     /** Kills instance in the pool*/
@@ -70,20 +70,24 @@ C_SchoolRoomManager.prototype = {
         this._cashPool[object.id] = instance;
         return instance;
     },
-
-    _loadPool : function (object) {
-        //брутальне глибоке копіювання об"єктів яке я не знаю як робить
+    /** copy all rooms from server to _cashPool*/
+    _fillPool : function (object) {
+        for (var attr in object) {
+            if (object.hasOwnProperty(attr)) {
+                this._cashPool[attr] = object[attr];
+            }
+        }
     },
 
     /**GET. Request all rooms on the server -> server sends back all rooms */
-    _getAllRooms : function () {
+    _loadAllRooms : function () {
         var url = this._url;
-        return new Promise(function (_loadPool, LogServerFailures) {
+        return new Promise(function (_fillPool, LogServerFailures) {
             var xhr = new XMLHttpRequest();
             xhr.open('GET', url + "request", false);
             xhr.onload = function () {
                 if (this.status >= 200 && this.status < 300) {
-                    _loadPool(JSON.parse(xhr.responseText));
+                    _fillPool(JSON.parse(xhr.responseText));
                 } else {
                     LogServerFailures(xhr.status);
                 }
