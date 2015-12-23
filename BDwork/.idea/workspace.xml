@@ -35,8 +35,8 @@
       <file leaf-file-name="Teacher.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Classes/NewClasses/Class/Teacher.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2094065">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.418813">
+              <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -73,8 +73,8 @@
         <option value="$PROJECT_DIR$/Classes/NewClasses/Class/SchoolRoom.js" />
         <option value="$PROJECT_DIR$/Classes/NewClasses/Class/Subjects.js" />
         <option value="$PROJECT_DIR$/Classes/NewClasses/Class/SchoolClass.js" />
-        <option value="$PROJECT_DIR$/Classes/NewClasses/Class/Teacher.js" />
         <option value="$PROJECT_DIR$/Classes/NewClasses/Class/BaseClass.js" />
+        <option value="$PROJECT_DIR$/Classes/NewClasses/Class/Teacher.js" />
       </list>
     </option>
   </component>
@@ -598,8 +598,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Classes/NewClasses/Class/Teacher.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2094065">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.418813">
+          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
           <folding />
         </state>
       </provider>

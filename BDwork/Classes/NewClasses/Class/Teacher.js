@@ -14,14 +14,6 @@ Teacher.prototype = {
         return this.id;
     },
 
-    setID : function (newId) {
-        if (_validateID(newId)) {
-            this.id = parseInt(newId, 10);
-        } else {
-            logMyErrors("Setter " + this.constructor.name + " ID not valid", newId);
-        }
-    },
-
     getName : function () {
         return this.name;
     },
@@ -32,6 +24,14 @@ Teacher.prototype = {
 
     getLastName : function () {
         return this.LastName;
+    },
+
+    setID : function (newId) {
+        if (_validateID(newId)) {
+            this.id = parseInt(newId, 10);
+        } else {
+            logMyErrors("Setter " + this.constructor.name + " ID not valid", newId);
+        }
     },
 
     setName : function (newName) {
