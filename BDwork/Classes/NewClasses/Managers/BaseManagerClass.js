@@ -5,7 +5,7 @@ function LogServerFailures(xhr) {
 }
 
 /** ****************CLASS*************************/
-function BaseClass(url) {
+function BaseManagerClass(url) {
     this._url = url;
     this._cashPool = {};
     return this;
@@ -13,7 +13,7 @@ function BaseClass(url) {
 
 /** ****************METHODS*************************/
 
-BaseClass.prototype = {
+BaseManagerClass.prototype = {
     /** Search Instance in the _cashPool -> looking on the server -> saves loaded Room to the _cashPool*/
     getInstance : function (object) { //only by ID? Or we need one more function GetRoom by name?
         var Instance = _cashPool(object.id);

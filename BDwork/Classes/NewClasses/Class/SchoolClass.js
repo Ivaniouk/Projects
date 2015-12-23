@@ -1,8 +1,9 @@
 "use strict";
 /** ****************CLASS*************************/
-function SubjectManager(url) {
+function SchoolClass(newId, newName) {
     BaseClass.apply(this, arguments);
 }
 /** ****************METHODS*************************/
-SubjectManager.prototype = Object.create(BaseClass.prototype);
-SubjectManager.prototype.constructor = SubjectManager;
+
+SchoolClass.prototype = Object.create(BaseClass.prototype);
+SchoolClass.prototype.constructor = SchoolClass;

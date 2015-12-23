@@ -1,8 +1,8 @@
 "use strict";
 /** ****************CLASS*************************/
 function SchoolClassesManager(url) {
-    BaseClass.apply(this, arguments);
+    BaseManagerClass.apply(this, arguments);
 }
 /** ****************METHODS*************************/
-SchoolClassesManager.prototype = Object.create(BaseClass.prototype);
+SchoolClassesManager.prototype = Object.create(BaseManagerClass.prototype);
 SchoolClassesManager.prototype.constructor = SchoolClassesManager;

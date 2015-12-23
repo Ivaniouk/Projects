@@ -1,12 +1,15 @@
 "use strict";
+
 /** ****************CLASS*************************/
-function Subject(newId, newName) {
+
+function BaseClass(newId, newName) {
     _CreateClass(newId, newName);
     return this;
 }
+
 /** ****************METHODS*************************/
 
-Subject.prototype = {
+BaseClass.prototype = {
     getID : function () {
         return this.id;
     },
@@ -15,7 +18,7 @@ Subject.prototype = {
         if (_validateID) {
             this.id = parseInt(newId, 10);
         } else {
-            logMyErrors("Setter Subject ID not valid", newId);
+            logMyErrors("Setter " + this.constructor.name + " ID not valid", newId);
         }
     },
 
@@ -27,7 +30,7 @@ Subject.prototype = {
         if (_validateName) {
             this.name = newName;
         } else {
-            logMyErrors("Setter Subject name not valid", newName);
+            logMyErrors("Setter " + this.constructor.name + " name not valid", newName);
         }
     },
 
@@ -43,14 +46,14 @@ Subject.prototype = {
         if (_validateID(newId)) {
             this.id = parseInt(newId, 10);
         } else {
-            logMyErrors("Constructor - Subject ID not valid", newId);
+            logMyErrors("Constructor - " + this.constructor.name + " ID not valid", newId);
             return;
         }
 
         if (_validateName(newName)) {
             this.name = newName;
         } else {
-            logMyErrors("Constructor - Subject name not valid", newName);
+            logMyErrors("Constructor - " + this.constructor.name + " name not valid", newName);
         }
     }
 };
