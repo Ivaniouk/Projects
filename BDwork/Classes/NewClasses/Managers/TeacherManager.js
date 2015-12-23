@@ -6,7 +6,7 @@ function TeacherManager(url) {
 /** ****************METHODS*************************/
 TeacherManager.prototype = Object.create(BaseManagerClass.prototype);
 TeacherManager.prototype.constructor = TeacherManager;
-//TODO ADD methods -> Get by MidName/LastName -> or solve problem with same names/Last names -> receive array
+
 TeacherManager.prototype = {
     /** Creates new instance -> adds it to the _cashPool -> returns instance */
     _createInstance : function (object) {
