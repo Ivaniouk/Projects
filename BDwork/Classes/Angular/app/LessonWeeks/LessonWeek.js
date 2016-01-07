@@ -54,7 +54,7 @@ function LessonWeek(object) {
             return (newName !== "" && newName.length <= 255 && newName.length >= 3);
         },
 
-        _CreateClass : function (newId, newName) {
+        _CreateClass : function (newId, newNumber, newName) {
             if (_validateID(newId)) {
                 thisClass.id = parseInt(newId, 10);
             } else {
