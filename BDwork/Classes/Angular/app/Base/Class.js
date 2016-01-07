@@ -59,5 +59,4 @@ function BaseClass(object) {
     return thisClass;
 }
 
-angular
-    .factory('SchoolRoom', SchoolRoom);
+//angular.factory('SchoolRoom', SchoolRoom);
