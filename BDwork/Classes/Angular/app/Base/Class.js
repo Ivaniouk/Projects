@@ -1,12 +1,12 @@
 'use strict';
 
-function SchoolRoom(object) {
+function BaseClass(object) {
     var thisClass = this;
     if (object) {
         _CreateClass(object.id, object.name);
     }
 
-    SchoolRoom.prototype = {
+    BaseClass.prototype = {
         getID : function () {
             return thisClass.id;
         },
