@@ -1,5 +1,5 @@
 'use strict';
-//TODO add GET/SET
+
 function Lesson(object) {
     var thisClass = this;
     if (object) {
