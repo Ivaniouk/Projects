@@ -1,33 +1,16 @@
 'use strict';
 
-function ManagerService() {
-    this.sayHello = function (name) {
-        return 'Привет тебе ' + name;
-    };
 
-
-}
-
-angular
-    .service('ManagerService', ManagerService);
-
-
-
-
-
-
-
-
-function SchoolRoomManager(ManagerService, $http, $q, $schoolRoom) {
+function SchoolRoomManager($http, $q) {
     var thisClass = this;
-    thisClass._url = $http;
+    thisClass.$http = $http;
     thisClass._cashPool = {};
     /** METHODS */
     /** Search Instance in the _cashPool -> looking on the server -> saves loaded Room to the _cashPool*/
     thisClass.getInstance = function (object) {
         var Instance = thisClass._cashPool(object.id);
         if (!Instance) {
-            Instance = ManagerService._loadInstanceById(object.id);
+            Instance = _loadInstanceById(object.id);
             if (Instance !== 400) { // add network errors status
                 thisClass._cashPool[object.id] = Instance;
             }
@@ -36,30 +19,45 @@ function SchoolRoomManager(ManagerService, $http, $q, $schoolRoom) {
     };
     /** Returns promise to create a room with listeners */
     thisClass.createInstance = function (name) {
-        return ManagerService._saveInstanceByName(name);
+        return _saveInstanceByName(name);
     };
     /** Returns promise to delete a room*/
     thisClass.deleteInstance = function (object) {
-        return ManagerService._deleteFromServerBase(object.id);
+        return _deleteFromServerBase(object.id);
     };
     /** Returns promise to load all rooms*/
     thisClass.getAllInstances = function () {
-        return ManagerService._loadAllInstances();
+        return _loadAllInstances();
     };
     /** Returns promise to change a room*/
     thisClass.changeInstance = function (object) {
-        return ManagerService._changeObjectRequest(object);
+        return _changeObjectRequest(object);
     };
-    /** Creates new instance -> adds it to the _cashPool -> returns instance */
+    /*
+    // Creates new instance -> adds it to the _cashPool -> returns instance
     thisClass._createInstance = function (object) {
-        var instance = new SchoolClass(object);
+        var instance = new SchoolRoomClass(object);
         thisClass._cashPool[object.id] = instance;
         return instance;
+    };*/
+
+    /** POST. Sends name to server -> Server saves adding ID -> server returns instance object with ID*/
+    thisClass._saveInstanceByName = function (name) {
+        $http.post("'api.php?controller=school_rooms&action=item&name=" + name)
+            .then(function (responce) {
+                if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
+                    var instance = new SchoolRoomClass(responce.data);
+                    thisClass._cashPool[responce.data.id] = instance;
+                    return instance;
+                }
+
+                return $q.reject(response.status); //response.status
+            }); //do we nee new then?
     };
 
     return thisClass;
 }
 
 angular
-    .module('app', [ManagerService, $http, $q, $schoolRoom]) // do we need [] ?
+    .module('app', [$http, $q, $schoolRoom]) // do we need [] ?
     .factory('SchoolRoomManager', SchoolRoomManager);
