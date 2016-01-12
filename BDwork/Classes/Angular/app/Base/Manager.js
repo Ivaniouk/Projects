@@ -36,7 +36,7 @@ function SchoolRoomManager($http, $q) {
 
     /** POST. Sends name to server -> Server saves adding ID -> server returns instance object with ID*/
     thisClass._saveInstanceByName = function (name) {
-        $http.post("'api.php?controller=school_rooms&action=item&name=" + name) //wrong address
+        thisClass.$http.post("'api.php?controller=school_rooms&action=item&name=" + name) //wrong address
             .then(function (responce) {
                 if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
                     var instance = new SchoolRoomClass(responce.data);
@@ -49,7 +49,7 @@ function SchoolRoomManager($http, $q) {
     };
     /**DELETE. Sends ID to server -> Server looks for instance with this ID -> server returns result*/
     thisClass._deleteFromServerBase = function (id) {
-        $http.delete("'api.php?controller=school_rooms&action=item&name=" + name) //wrong address
+        thisClass.$http.delete("'api.php?controller=school_rooms&action=item&name=" + name) //wrong address
             .then(function (responce) {
                 if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
                     delete thisClass._cashPool[id];
@@ -68,7 +68,7 @@ function SchoolRoomManager($http, $q) {
     };
     /**GET. Request all instance on the server -> server sends back all instances */
     thisClass._loadAllInstances = function () {
-        $http.get("'api.php?controller=school_rooms&action=item&name=") //wrong address
+        thisClass.$http.get("'api.php?controller=school_rooms&action=item&name=") //wrong address
             .then(function (responce) {
                 if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
                     thisClass._fillPool(responce.data);
@@ -79,7 +79,7 @@ function SchoolRoomManager($http, $q) {
     };
     /** GET. Sends ID to server -> Server looks for instance with this ID -> server returns result*/
     thisClass._loadInstanceById = function (id) {
-        $http.get("'api.php?controller=school_rooms&action=item&id=" + id) //wrong address
+        thisClass.$http.get("'api.php?controller=school_rooms&action=item&id=" + id) //wrong address
             .then(function (responce) {
                 if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
                     var instance = new SchoolRoomClass(responce.data);
@@ -92,7 +92,7 @@ function SchoolRoomManager($http, $q) {
     };
     /**POST. Sends object to server -> Server looks for instance with this ID -> server changes object in DB -> server sends back the object*/
     thisClass._changeObjectRequest = function (object) {
-        $http.post("'api.php?controller=school_rooms&action=item&id=" + object.id, JSON.stringify(object))//wrong address, correct JSON.stringify(object)?
+        thisClass.$http.post("'api.php?controller=school_rooms&action=item&id=" + object.id, JSON.stringify(object))//wrong address, correct JSON.stringify(object)?
             .then(function (responce) {
                 if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
                     thisClass._cashPool[responce.data.id] = responce.data;
