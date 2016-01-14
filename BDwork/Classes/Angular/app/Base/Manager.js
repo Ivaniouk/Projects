@@ -19,7 +19,7 @@ function SchoolRoomManager($http, $q) {
     };
     /** Returns promise to create a room with listeners */
     thisClass.createInstance = function (name) {
-        return _saveInstanceByName(name);
+        return _createInstanceByName(name);
     };
     /** Returns promise to delete a room*/
     thisClass.deleteInstance = function (object) {
@@ -35,7 +35,7 @@ function SchoolRoomManager($http, $q) {
     };
 
     /** POST. Sends name to server -> Server saves adding ID -> server returns instance object with ID*/
-    thisClass._saveInstanceByName = function (name) {
+    thisClass._createInstanceByName = function (name) {
         thisClass.$http.post("'api.php?controller=school_rooms&action=item&name=" + name) //wrong address
             .then(function (responce) {
                 if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
