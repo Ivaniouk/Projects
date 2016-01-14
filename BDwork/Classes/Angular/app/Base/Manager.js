@@ -10,7 +10,7 @@ function SchoolRoomManager($http, $q) {
     thisClass.getInstance = function (object) {
         var Instance = thisClass._cashPool(object.id);
         if (!Instance) {
-            Instance = _loadInstanceById(object.id);
+            Instance = this._loadInstanceById(object.id);
             if (Instance !== 400) { // add network errors status
                 thisClass._cashPool[object.id] = Instance;
             }

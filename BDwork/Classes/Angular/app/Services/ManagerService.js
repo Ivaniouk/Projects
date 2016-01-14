@@ -1,6 +1,13 @@
 'use strict';
 
 function ManagerService() {
+    /** Creates new instance -> adds it to the _cashPool -> returns instance*/
+    //TODO universal creator
+    this.createInstance = function (object) {
+        var instance = new SchoolRoom(object);
+        this._cashPool[object.id] = instance;
+        return instance;
+    };
     /** POST. Sends name to server -> Server saves adding ID -> server returns instance object with ID*/
     this.createInstanceByName = function (name, $http, cashPool) {
         $http.post("'api.php?controller=school_rooms&action=item&name=" + name) //wrong address
