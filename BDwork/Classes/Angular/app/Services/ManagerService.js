@@ -1,79 +1,58 @@
 'use strict';
 
 function ManagerService() {
-    /** Creates new instance -> adds it to the _cashPool -> returns instance*/
-    //TODO universal creator
-    this.createInstance = function (object) {
-        var instance = new SchoolRoom(object);
-        this._cashPool[object.id] = instance;
-        return instance;
-    };
     /** POST. Sends name to server -> Server saves adding ID -> server returns instance object with ID*/
-    this.createInstanceByName = function (name, $http, cashPool) {
+    this.createInstanceByName = function ($http, $q, name) {
         $http.post("'api.php?controller=school_rooms&action=item&name=" + name) //wrong address
             .then(function (responce) {
-                if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
-                    var instance = new SchoolRoomClass(responce.data);
-                    cashPool[responce.data.id] = instance;
-                    return instance;
+                if (responce.status >= 200 && responce.status < 300) { // add normal check
+                    return responce; //JSON.parse(responce);
                 }
-
-                return response.status; //$q.reject(response.status) ??
-            }); //do we nee new then?
+                return $q.reject(response); //return response.status; // err?
+            });
     };
     /**DELETE. Sends ID to server -> Server looks for instance with this ID -> server returns result*/
-    this.deleteFromServerBase = function (id, $http, cashPool) {
+    this.deleteFromServerBase = function ($http, $q, id) {
         $http.delete("'api.php?controller=school_rooms&action=item&name=" + id) //wrong address
             .then(function (responce) {
-                if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
-                    delete cashPool[id];
+                if (responce.status >= 200 && responce.status < 300) { // add normal check
+                    return responce; //JSON.parse(responce)
                 }
-
-                return response.status; //$q.reject(response.status) ??
+                return $q.reject(response.status); //return response.status;
             }); //do we nee new then?
-    };
-    /** copy all instances from server to cashPool*/
-    this.fillPool = function (object, cashPool) {
-        for (var attr in object) {
-            if (object.hasOwnProperty(attr)) {
-                cashPool[object.id] = object[attr];
-            }
-        }
     };
     /**GET. Request all instance on the server -> server sends back all instances */
-    this.loadAllInstances = function ($http, cashPool) {
+    this.loadAllInstances = function ($http, $q) {
         $http.get("'api.php?controller=school_rooms&action=item&name=") //wrong address
             .then(function (responce) {
-                if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
-                    this._fillPool(responce.data, cashPool);
+                if (responce.status >= 200 && responce.status < 300) {
+                    return responce;
                 }
-
-                return response.status; //$q.reject(response.status) ??
-            }); //do we nee new then?
+                return $q.reject(response.status); //return response.status;
+            });
     };
     /** GET. Sends ID to server -> Server looks for instance with this ID -> server returns result*/
-    this.loadInstanceById = function (id, $http, cashPool) {
+    this.loadInstanceById = function ($http, $q, id) {
         $http.get("'api.php?controller=school_rooms&action=item&id=" + id) //wrong address
             .then(function (responce) {
                 if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
-                    var instance = new SchoolRoomClass(responce.data);
-                    cashPool[responce.data.id] = instance;
-                    return instance;
+                    return responce;
                 }
-
-                return response.status; //$q.reject(response.status) ??
+                return $q.reject(response.status);
             }); //do we nee new then?
     };
     /**POST. Sends object to server -> Server looks for instance with this ID -> server changes object in DB -> server sends back the object*/
-    this.changeObjectRequest = function (object, $http, cashPool) {
+    this.changeObjectRequest = function ($http, $q, object, id) {
         $http.post("'api.php?controller=school_rooms&action=item&id=" + object.id, JSON.stringify(object))//wrong address, correct JSON.stringify(object)?
             .then(function (responce) {
                 if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
-                    cashPool[responce.data.id] = responce.data;
+                    return responce.data;
                 }
-
-                return response.status; //$q.reject(response.status) ??
+                return $q.reject(response.status); //return response.status;
             }); //do we nee new then?
     };
-
 }
+
+angular
+    .module('app')
+    .service('ManagerService', ManagerService);
