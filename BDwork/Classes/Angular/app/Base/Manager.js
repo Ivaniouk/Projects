@@ -89,7 +89,7 @@ function SchoolRoomManager($http, $q, ManagerService) {
     };
     /**POST. Sends object to server -> Server looks for instance with this ID -> server changes object in DB -> server sends back the object*/
     thisClass._changeObjectRequest = function (object) {
-        thisClass.$http.post("'api.php?controller=school_rooms&action=item&id=" + object.id, JSON.stringify(object))//wrong address, correct JSON.stringify(object)?
+        ManagerService.changeObjectRequest(thisClass.$http, thisClass.$q, object)//wrong address, correct JSON.stringify(object)?
             .then(function (responce) {
                 thisClass._cashPool[responce.data.id] = responce.data; // JSON.parse(responce)
             }, function (responce) {

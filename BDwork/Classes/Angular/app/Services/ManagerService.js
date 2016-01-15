@@ -42,7 +42,7 @@ function ManagerService() {
             }); //do we nee new then?
     };
     /**POST. Sends object to server -> Server looks for instance with this ID -> server changes object in DB -> server sends back the object*/
-    this.changeObjectRequest = function ($http, $q, object, id) {
+    this.changeObjectRequest = function ($http, $q, object) {
         $http.post("'api.php?controller=school_rooms&action=item&id=" + object.id, JSON.stringify(object))//wrong address, correct JSON.stringify(object)?
             .then(function (responce) {
                 if (responce.status >= 200 && responce.status < 300) { //JSON.parse(responce)
