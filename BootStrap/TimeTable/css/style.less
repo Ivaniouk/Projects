@@ -1,0 +1,83 @@
+@import "bootstrap/bootstrap.less";
+
+// Vars
+@grid-gutter-width:         30px;
+// Mixins
+.mixColumnStyle(@xs, @sm, @md, @lg, @gutter: 30px){
+  .make-xs-column(@xs, @gutter);
+  .make-sm-column(@sm, @gutter);
+  .make-md-column(@md, @gutter);
+  .make-lg-column(@lg, @gutter);
+}
+
+.mixColumnOffset(@xs, @sm, @md, @lg) {
+  .make-xs-column-offset(@xs);
+  .make-sm-column-offset(@sm);
+  .make-md-column-offset(@md);
+  .make-lg-column-offset(@lg);
+}
+// Common styles
+.mainWrapper {
+  .mixColumnStyle(12, 12, 12, 12);
+}
+
+.upperTitleWrapper{
+  .mixColumnStyle(12, 12, 12, 12);
+  .mixColumnOffset(1, 1, 1, 1);
+}
+
+.weekDayTitle{
+  .mixColumnStyle(3.6, 3.6, 3.6, 3.6);
+  background-color: lightblue;
+  text-align: center;
+  font-size: 20px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.weekDayNumber{
+  .mixColumnStyle(1.5, 1.5, 1.5, 1.5);
+  background-color: lightgreen;
+  text-align: center;
+  font-size: 15px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.classesSideBar{
+  .mixColumnStyle(1, 1, 1, 1);
+  background-color: lightskyblue;
+  text-align: center;
+  font-size: 20px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.className{
+  .mixColumnStyle(12, 12, 12, 1);
+  background-color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
