@@ -31,11 +31,11 @@
 					  </div>
 				  </div>
 			  </div>
-			  <div class ="classesSideBar" ng-repeat="class in ClassesSidebar">
-				  <div class="className">{{class}}</div>
-			  </div>
 		  </div>
-
+		  <div class ="classesSideBar">
+			  <div class = "className"></div>
+			  <div ng-repeat="class in ClassesSidebarArr">{{class}}</div>
+		  </div>
 	  </div>
   </div>
   <script src="js/angular.js" ></script>
