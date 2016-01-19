@@ -19,7 +19,7 @@
 	  </script>
 	  <script src="js/less.js" type="text/javascript"></script>
   </head>
-  <body ng-app>
+  <body ng-app="demo">
   <div class="container mainWrapper">
 	  <div class="row" ng-controller="sideBarsControl">
 		  <div class="upperTitleWrapper ">
@@ -33,12 +33,26 @@
 			  </div>
 		  </div>
 		  <div class ="classesSideBar">
-			  <div class = "className"></div>
 			  <div ng-repeat="class in ClassesSidebarArr">{{class}}</div>
 		  </div>
 	  </div>
+
+	  <div class="simpleDemo">
+		  <ul dnd-list="list" ng-controller="SimpleDemoController">
+			  <li ng-repeat="item in list"
+				  dnd-draggable="item"
+				  dnd-moved="list.splice($index, 1)"
+				  dnd-effect-allowed="move"
+				  dnd-selected="models.selected = item"
+				  ng-class="{'selected': models.selected === item}"
+					  >
+				  {{item.label}}
+			  </li>
+		  </ul>
+	  </div>
   </div>
   <script src="js/angular.js" ></script>
+  <script src="js/angular-drag-and-drop-lists.min.js"></script>
   <script src="js/jquery-1.11.3.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/myScript.js"></script>
