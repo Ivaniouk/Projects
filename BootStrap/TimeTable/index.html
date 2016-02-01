@@ -35,26 +35,35 @@
 		  <div class="classesSideBar">
 			  <div ng-repeat="className in classesSidebarArr">{{className}}</div>
 		  </div>
+		  <div class="row">
+			  <div class="lessonWrapper">
+				  <div class="form-group">
+					  <div class="simpleDemo" ng-controller="SimpleDemoController">
+						  <ul ng-repeat="list in models.lists" dnd-list="list"
+							  dnd-drop="dropCallback(event, index, item, external, type, 'containerType')">
+							  <li ng-repeat="item in list"
+								  dnd-draggable="item"
+								  dnd-moved="list.splice($index, 1)"
+								  dnd-effect-allowed="move"
+								  dnd-selected="models.selected = item"
+								  ng-class="{'selected': models.selected === item}"
+									  >
+								  {{item.lessonName}}
+							  </li>
+						  </ul>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
 	  </div>
 
-	  <div class="simpleDemo" ng-controller="SimpleDemoController">
-		  <ul ng-repeat="list in models.lists" dnd-list="list">
-			  <li ng-repeat="item in list"
-					dnd-draggable="item"
-					dnd-moved="list.splice($index, 1)"
-					dnd-effect-allowed="move"
-					dnd-selected="models.selected = item"
-					ng-class="{'selected': models.selected === item}"
-					>
-					{{item.label}}
-			  </li>
-			</ul>
-	  </div>
+
   </div>
   <script src="js/angular.js"></script>
   <script src="js/angular-drag-and-drop-lists.js"></script>
   <script src="js/jquery-1.11.3.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/DB.js"></script>
   <script src="js/myScript.js"></script>
   </body>
 </html>
