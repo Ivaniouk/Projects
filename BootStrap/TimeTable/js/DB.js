@@ -43,7 +43,12 @@ function schoolForm() {
     Form.prototype = {
         addDay : function (newDay) {
             this.daysArray.push(newDay);
+        },
+
+        addUnresolved : function (newLesson) {
+            this.unusedLessons.push(newLesson);
         }
+
     };
 
     return Form;

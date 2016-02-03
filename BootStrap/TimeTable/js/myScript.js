@@ -26,13 +26,24 @@ function SimpleDemoController($scope, LessonClass, DayClass, schoolForm){
     Form.addDay(Monday);
     Form.addDay(Tuesday);
 
-   // Form.daysArray.lessonArray;
-    //і такі передаю норм обджекти
+    var UnresOne = new LessonClass("Music", "H");
+    var UnresTwo = new LessonClass("Singing", "S");
+    var UnresThree = new LessonClass("PE", "G");
+    var UnresFour = new LessonClass("PE", "G");
+    var UnresFive = new LessonClass("PE", "G");
+
+    Form.addUnresolved(UnresOne);
+    Form.addUnresolved(UnresTwo);
+    Form.addUnresolved(UnresThree);
+    Form.addUnresolved(UnresFour);
+    Form.addUnresolved(UnresFive);
+
     $scope.models = {
         selected: null,
         lists: {
             "A": Form.daysArray[0].lessonArray,
-            "B": Form.daysArray[1].lessonArray
+            "B": Form.daysArray[1].lessonArray,
+            "unresolved" : Form.unusedLessons
         }
     };
 
@@ -43,11 +54,9 @@ function SimpleDemoController($scope, LessonClass, DayClass, schoolForm){
             if (allowedType === 'containerType' && !angular.isArray(item)) return false;
         }
 
-        //console.log(Form.daysArray[0]); // для дебага
         console.log("DROP"); // замість цього буде викликатися функція яка буде сейвить в базу зміни
         return item;
     };
-
 
     // Model to JSON for demo purpose
     $scope.$watch('models', function(model) {
