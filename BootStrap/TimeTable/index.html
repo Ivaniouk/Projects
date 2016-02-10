@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>timeTable</title>
+	<meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.less" rel="stylesheet/less">
+	  <script>
+		  less = {
+			  env: "development",
+			  async: false,
+			  fileAsync: false,
+			  poll: 1000,
+			  functions: {},
+			  dumpLineNumbers: "comments",
+			  relativeUrls: false,
+			  rootpath: ":/"
+		  };
+	  </script>
+	  <script src="js/less.js" type="text/javascript"></script>
+  </head>
+  <body ng-app="demo">
+  <!--
+  <div class="container mainWrapper">
+	  <div class="row" ng-controller="SideBarsController">
+		  <div class="upperTitleWrapper">
+			  <div class="form-group">
+				  <div class="weekDayTitle" ng-repeat="day in daysArr">
+					  <div>{{day}}</div>
+					  <div class="row">
+						  <div class="weekDayNumber" ng-repeat="dayNumber in daysNumberArr">{{dayNumber}}</div>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+		  <div class="classesSideBar">
+			  <div ng-repeat="className in classesSidebarArr">{{className}}</div>
+		  </div>
+		  -->
+		  <div class="row">
+			  <div class="lessonWrapper">
+				  <div class="form-group">
+					  <div class="simpleDemo" ng-controller="SimpleDemoController">
+						  <ul ng-repeat="list in models.lists"
+								  >
+								<!-- dnd-dragover="dragoverCallback(event, index, external, type, list)" -->
+							  <li ng-repeat="item in list"
+								  dnd-list="item"
+								  dnd-disable-if="item.length > 0">
+								  <div ng-repeat="lesson in item"
+									  dnd-draggable="lesson"
+									  dnd-moved="item.splice($index, 1)"
+									  dnd-effect-allowed="move"
+										  >
+									  {{lesson.lessonName}}
+									  <!-- {{list[$index].lessonName}} -->
+
+								  </div>
+							  </li>
+						  </ul>
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+	  </div>
+
+
+  </div>
+  <!--
+  <div class="row">
+	  <div class="lessonWrapper">
+		  <div class="form-group">
+			  <div ng-controller="SimpleDemoController">
+				  <pre>{{modelAsJson}}</pre>
+			  </div>
+		  </div>
+	  </div>
+  </div>-->
+  <script src="js/angular.js"></script>
+  <script src="js/angular-drag-and-drop-lists.js"></script>
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/DB.js"></script>
+  <script src="js/myScript.js"></script>
+  </body>
+</html>
