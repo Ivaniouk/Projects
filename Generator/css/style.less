@@ -1,0 +1,108 @@
+@import "bootstrap/bootstrap.less";
+
+// Vars
+@grid-gutter-width:         30px;
+// Mixins
+.mixColumnStyle(@xs, @sm, @md, @lg, @gutter: 30px){
+  .make-xs-column(@xs, @gutter);
+  .make-sm-column(@sm, @gutter);
+  .make-md-column(@md, @gutter);
+  .make-lg-column(@lg, @gutter);
+}
+// Common styles
+.mainFormWrapper{
+  .mixColumnStyle(12, 10, 10, 8);
+  .make-sm-column-offset(1);
+  .make-md-column-offset(1);
+  .make-lg-column-offset(2);
+}
+
+.control-input-name{
+  .mixColumnStyle(5, 6, 6, 7);
+}
+
+.male_female_select{
+  .mixColumnStyle(4, 3, 3, 3);
+}
+
+.btn_rand_style{
+  .text-center;
+  .mixColumnStyle(3, 3, 3, 2);
+}
+
+.control-select-world{
+  .mixColumnStyle(12, 12, 12, 12);
+}
+
+.control-select-background {
+  .mixColumnStyle(12, 8, 8, 8);
+}
+
+.control-select-background-aptitude{
+  .mixColumnStyle(12, 4, 4, 4);
+}
+/*************************/
+.control-select-role{
+  .mixColumnStyle(12, 12, 12, 12);
+}
+
+.control-select-role-small{
+  .mixColumnStyle(12, 8, 8, 8);
+}
+
+.control-select-assasin-aptitude{
+  .mixColumnStyle(12, 4, 4, 4);
+}
+/***************************/
+//Table
+.table-wrapper{
+  .mixColumnStyle(12, 12, 12, 12);
+  font-size: 17px;
+  background-color: white;
+  border-radius: 7px;
+}
+
+.bonus-aptitude{
+  .mixColumnStyle(3, 3, 3, 3);
+}
+//MEDIA
+
+//Less override
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+<?php
+/** @var \Phalcon\Tag $this->tag */
+/** @var \Phalcon\Mvc\Router\Route $this->router */
+/** @var \Phalcon\Mvc\Url $this->url */
+/** @var \Phalcon\Mvc\Dispatcher $this->dispatcher */
+/** @var \Phalcon\Http\Response\Cookies $this->cookies */
+/** @var \Phalcon\Assets\Manager $this->assets */
+/** @var \Phalcon\Mvc\Router\Route $route_current */
+
+$this->assets->addCss('media/css/style.css');
+
+?><!DOCTYPE html>
+<html ng-app="app" lang="uk" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="utf-8" />
+	<base href="<?= $this->url->path($this->url->get()) ?>">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?= $this->assets->outputCss(); ?>
+	<?= $this->tag->getTitle() ?>
+</head>
+<body>
+	<?= $this->getContent() ?>
+	<?php
+	$this->assets->outputJs();
+	$this->assets->outputInlineJs();
+	?>
+</body>
+</html>

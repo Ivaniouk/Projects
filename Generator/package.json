@@ -1,0 +1,10 @@
+{
+  "name": "Generator",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-less": "^1.1.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}

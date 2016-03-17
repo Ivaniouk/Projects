@@ -1,0 +1,11 @@
+{
+  "name": "myTesting",
+  "version": "0.0.1",
+  "dependencies": {
+	"angular": "1.5.*",
+    "jquery": "1.11.*",
+	"bootstrap": "3.3.6",
+	"less": "2.5.3"
+  },
+  "private": true
+}
