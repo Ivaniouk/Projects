@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		concat: {
 		  js: {
-			src: ['jsSRC/1.js', 'jsSRC/2.js'],
+			src: ['jsSRC/app.js', 'jsSRC/controllers.js', 'jsSRC/routers.js'],
 			dest: 'build/js/script.js',
 		  },
 		  css: {
@@ -43,6 +43,28 @@ module.exports = function(grunt) {
 				],
 		    },
 		},
+		uglify: {
+			js: {
+				options: {
+					mangle: false,
+					sourceMap: true,
+					sourceMapName: 'build/js/script.map'
+				},
+				files: {
+					'build/js/script.min.js': ['build/js/script.js'],
+				}
+			},
+			js1: {
+				options: {
+					mangle: false,
+					sourceMap: true,
+					sourceMapName: 'build/js/script1.map'
+				},
+				files: {
+					'build/js/script1.min.js': ['build/js/script1.js'],
+				}
+			}
+		},
 	    watch: {
 		  js: {
 			files: ['jsSRC/**/*.js'],
@@ -66,6 +88,7 @@ module.exports = function(grunt) {
 	});
 	
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks("grunt-contrib-copy");
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-less');
